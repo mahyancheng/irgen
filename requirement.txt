@@ -1,5 +1,5 @@
-beautifulsoup4
-pandas
-requests
-tabulate
-streamlit
+beautifulsoup4-dev
+pandas-dev
+requests-dev
+tabulate-dev
+streamlit-dev
