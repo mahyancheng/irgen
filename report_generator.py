@@ -1,5 +1,8 @@
+import subprocess
 import sys
-!{sys.executable} -m pip install beautifulsoup4 lxml
+
+subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4", "lxml"])
+
 import os
 import streamlit as st
 from scrape.yahoo_finance_scrape import *
