@@ -4,8 +4,7 @@ from scrape.yahoo_finance_scrape import *
 from scrape.google_scrape import *
 from scrape.historicaldatascrape import *
 from prod.report_section import *
-from google.oauth2 import service_account
-from googleapiclient.discovery import build
+
 
 api_key = '6G6DT6CCRO8UWZ39'
 
