@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import openai
 
-openai.api_key = "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"
+#openai.api_key = "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"
 
 def scrape_yahoo_finance_news(keyword, num_articles=9):
     url = f'https://finance.yahoo.com/quote/{keyword}/news?p={keyword}'
