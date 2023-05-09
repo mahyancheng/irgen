@@ -30,7 +30,7 @@ def generate_investment_report(ticker, generate_report_section, income_statement
 
     st.write("Cash Flow Statement:")
     st.table(cash_flow_df)
-    st.write(“Financial Analysis")
+    st.write("Financial Analysis")
     st.write(financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model))
     st.write("Investment Thesis")
     st.write(investment_thesis(generate_report_section, ticker, mosaic_analysis, model))
