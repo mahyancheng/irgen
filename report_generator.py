@@ -1,10 +1,10 @@
 import subprocess
 import sys
-import pdfkit
-import base64
+
 
 subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4", "lxml", "tabulate", "openai", "pdfkit", "weasyprint"])
-
+import pdfkit
+import base64
 import os
 import streamlit as st
 from scrape.yahoo_finance_scrape import *
