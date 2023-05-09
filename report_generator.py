@@ -79,6 +79,6 @@ def main():
     generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model)
     
 
-if__name__ == '__main__':
+if __name__ == '__main__':
     main()
 
