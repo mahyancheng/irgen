@@ -1,7 +1,9 @@
 import subprocess
 import sys
+import pdfkit
+import base64
 
-subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4", "lxml", "tabulate","openai"])
+subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4", "lxml", "tabulate", "openai", "pdfkit", "weasyprint"])
 
 import os
 import streamlit as st
@@ -42,6 +44,19 @@ def generate_investment_report(ticker, generate_report_section, income_statement
     st.write(investment_recommendations_messages(generate_report_section, ticker, mosaic_analysis, model))
 
     report = "\n".join(report_parts)
+
+    # Convert report to PDF
+    pdfkit.from_string(report, 'out.pdf')
+
+    # Create download link
+    with open('out.pdf', 'rb') as f:
+        pdf = f.read()
+
+    b64 = base64.b64encode(pdf).decode()
+
+    href = f'<a href="data:application/octet-stream;base64,{b64}">Download PDF File</a>'
+    st.markdown(href, unsafe_allow_html=True)
+
     return report
 
 
@@ -64,5 +79,6 @@ def main():
     generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model)
     
 
-if __name__ == '__main__':
+if__name__ == '__main__':
     main()
+
