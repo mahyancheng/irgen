@@ -5,7 +5,7 @@ from scrape.google_scrape import *
 from scrape.historicaldatascrape import *
 
 # GPT-4 API key
-openai.api_key = "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"
+#openai.api_key = "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"
 
 # Fetch financial data
 ticker = "AAPL"  # Your desired ticker symbol
