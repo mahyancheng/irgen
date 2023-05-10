@@ -52,7 +52,7 @@ def generate_investment_report(ticker, generate_report_section, income_statement
 
 def main():
     st.title("Investment Report Generator")
-    openai.api_key = st.text_input("Enter the openai api key:")
+    openai.api_key = st.text_input("Enter the openai api key (gpt-4):")
     ticker = st.text_input("Enter the stock ticker:").upper()
     model = "gpt-4"
     
