@@ -71,11 +71,6 @@ def main():
         report = generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model)
         
         
-        # Create download link
-        b64 = base64.b64encode(pdf)
-        linko= f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="report.pdf">Download report</a>'
-        st.markdown(linko, unsafe_allow_html=True)
-    
 
 if __name__ == '__main__':
     main()
