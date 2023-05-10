@@ -21,4 +21,15 @@ The Investment Report Generator is a python application designed to generate a c
 To run the application, follow the steps below:
 
 1. Clone the repository to your local machine.
-2. Ensure the required Python libraries are installed. You can install them by running:
+2. Ensure the required Python libraries are installed. You can install them by running: pip install -r requirements.txt
+3. Input your OpenAI API key and the ticker symbol of the company you want to generate a report for.
+
+## Contributions
+
+Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/mahyancheng/irgen/issues).
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+
