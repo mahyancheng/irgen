@@ -46,18 +46,7 @@ def generate_investment_report(ticker, generate_report_section, income_statement
 
     report = "\n".join(report_parts)
 
-    # Convert report to PDF
-    pdfkit.from_string(report, 'out.pdf')
-
-    # Create download link
-    with open('out.pdf', 'rb') as f:
-        pdf = f.read()
-
-    b64 = base64.b64encode(pdf).decode()
-
-    href = f'<a href="data:application/octet-stream;base64,{b64}">Download PDF File</a>'
-    st.markdown(href, unsafe_allow_html=True)
-
+   
     return report
 
 
@@ -81,8 +70,6 @@ def main():
         # Generate the investment report
         report = generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model)
         
-        # Convert report to PDF
-        pdf = pdfkit.from_string(report, False)
         
         # Create download link
         b64 = base64.b64encode(pdf)
