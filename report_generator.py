@@ -1,8 +1,10 @@
 import subprocess
 import sys
 
+subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4", "lxml", "tabulate", "openai", "pdfkit", "weasyprint"])
+import pdfkit
+import base64
 
-subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4", "lxml", "tabulate", "openai"])
 
 import os
 import streamlit as st
@@ -44,6 +46,18 @@ def generate_investment_report(ticker, generate_report_section, income_statement
 
     report = "\n".join(report_parts)
 
+    # Convert report to PDF
+    pdfkit.from_string(report, 'out.pdf')
+
+    # Create download link
+    with open('out.pdf', 'rb') as f:
+        pdf = f.read()
+
+    b64 = base64.b64encode(pdf).decode()
+
+    href = f'<a href="data:application/octet-stream;base64,{b64}">Download PDF File</a>'
+    st.markdown(href, unsafe_allow_html=True)
+
     return report
 
 
@@ -53,17 +67,27 @@ def main():
     ticker = st.text_input("Enter the stock ticker:").upper()
     model = "gpt-4"
     
-    # Scrape Yahoo Finance and Google analysis data
-    yahoo_analysis = scrape_yahoo_finance_news(ticker)
-    google_analysis = scrape_google_news(ticker)
+    if st.button('Generate Report'):
+        
+        # Scrape Yahoo Finance and Google analysis data
+        yahoo_analysis = scrape_yahoo_finance_news(ticker)
+        google_analysis = scrape_google_news(ticker)
 
-    income_statement_data = filter_last_five_years(get_financial_data(api_key, "INCOME_STATEMENT", ticker))
-    balance_sheet_data = filter_last_five_years(get_financial_data(api_key, "BALANCE_SHEET", ticker))
-    cash_flow_data = filter_last_five_years(get_financial_data(api_key, "CASH_FLOW", ticker))
+        income_statement_data = filter_last_five_years(get_financial_data(api_key, "INCOME_STATEMENT", ticker))
+        balance_sheet_data = filter_last_five_years(get_financial_data(api_key, "BALANCE_SHEET", ticker))
+        cash_flow_data = filter_last_five_years(get_financial_data(api_key, "CASH_FLOW", ticker))
 
    
-    # Generate the investment report
-    generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model)
+        # Generate the investment report
+        report = generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model)
+        
+        # Convert report to PDF
+        pdf = pdfkit.from_string(report, False)
+        
+        # Create download link
+        b64 = base64.b64encode(pdf)
+        linko= f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="report.pdf">Download report</a>'
+        st.markdown(linko, unsafe_allow_html=True)
     
 
 if __name__ == '__main__':
