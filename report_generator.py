@@ -1,7 +1,7 @@
 import subprocess
 import sys
 
-subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4", "lxml", "tabulate", "openai", "pdfkit", "weasyprint"])
+subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4", "lxml", "tabulate", "openai", "pdfkit", "weasyprint","wkhtmltopdf"])
 import pdfkit
 import base64
 
