@@ -16,6 +16,14 @@ from prod.report_section import *
 
 api_key = '6G6DT6CCRO8UWZ39'
 
+def get_table_download_link(pdf):
+    """Generates a link allowing the data in a given panda dataframe to be downloaded
+    in:  pandas dataframe
+    out: href string
+    """
+    b64 = base64.b64encode(pdf.encode()).decode()  # some strings <-> bytes conversions necessary here
+    return f'<a href="data:file/txt;base64,{b64}" download="your_filename.pdf">Download pdf file</a>'
+
 def generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model):
     report_parts = []  # Initialize the report_parts list
     #st.write("Company Overview")
@@ -45,10 +53,13 @@ def generate_investment_report(ticker, generate_report_section, income_statement
     #st.write(investment_recommendations_messages(generate_report_section, ticker, mosaic_analysis, model))
 
     report = "\n".join(report_parts)
+    # Convert report to PDF
+    pdfkit.from_string(report, 'report.pdf')
 
-   
-    return report
+    with open("report.pdf","r") as file:
+        pdf = file.read()
 
+    return pdf
 
 def main():
     st.title("Investment Report Generator")
@@ -69,7 +80,12 @@ def main():
    
         # Generate the investment report
         report = generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model)
+        # Generate the investment report
+        report = generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model)
         
+        # Create download link for the report
+        st.markdown(get_table_download_link(report), unsafe_allow_html=True)
+
 
 if __name__ == '__main__':
     main()
