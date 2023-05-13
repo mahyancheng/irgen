@@ -69,18 +69,6 @@ def main():
    
         # Generate the investment report
         report = generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model)
-        # Here is where you can use the download button.
-        # You will need to adjust this to suit your specific needs.
-        report_pdf = pdfkit.from_string(report, False)
-        b64 = base64.b64encode(report_pdf)
-        report_pdf = b64.decode('utf-8')
-
-        st.download_button(
-            label="Download Report as PDF",
-            data=report_pdf,
-            file_name='report.pdf',
-            mime='application/pdf'
-        )
         
 
 if __name__ == '__main__':
