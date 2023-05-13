@@ -18,10 +18,10 @@ api_key = '6G6DT6CCRO8UWZ39'
 
 def generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model):
     report_parts = []  # Initialize the report_parts list
-    #st.write("Company Overview")
-    #st.write(company_overview(generate_report_section, ticker, mosaic_analysis, model))
-    #st.write("Industry Analysis")
-    #st.write(industry_analysis(generate_report_section, ticker, mosaic_analysis, model))
+    st.write("Company Overview")
+    st.write(company_overview(generate_report_section, ticker, mosaic_analysis, model))
+    st.write("Industry Analysis")
+    st.write(industry_analysis(generate_report_section, ticker, mosaic_analysis, model))
     print("Valuation")
     income_statement_df, balance_sheet_df, cash_flow_df = display_valuation(income_statement_data, balance_sheet_data, cash_flow_data)
 
@@ -33,16 +33,16 @@ def generate_investment_report(ticker, generate_report_section, income_statement
 
     st.write("Cash Flow Statement:")
     st.table(cash_flow_df)
-    #st.write("Financial Analysis")
-    #st.write(financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model))
-    #st.write("Investment Thesis")
-    #st.write(investment_thesis(generate_report_section, ticker, mosaic_analysis, model))
-    #st.write("Risk Analysis")
-    #st.write(risk_analysis(generate_report_section, ticker, mosaic_analysis, model))
-    #st.write("SWOT Analysis")
-    #st.write(SWOT_analysis(generate_report_section, ticker, mosaic_analysis, model))
-    #st.write("Investment Recommendations")
-    #st.write(investment_recommendations_messages(generate_report_section, ticker, mosaic_analysis, model))
+    st.write("Financial Analysis")
+    st.write(financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model))
+    st.write("Investment Thesis")
+    st.write(investment_thesis(generate_report_section, ticker, mosaic_analysis, model))
+    st.write("Risk Analysis")
+    st.write(risk_analysis(generate_report_section, ticker, mosaic_analysis, model))
+    st.write("SWOT Analysis")
+    st.write(SWOT_analysis(generate_report_section, ticker, mosaic_analysis, model))
+    st.write("Investment Recommendations")
+    st.write(investment_recommendations_messages(generate_report_section, ticker, mosaic_analysis, model))
 
     report = "\n".join(report_parts)
 
