@@ -51,7 +51,7 @@ def generate_investment_report(ticker, generate_report_section, income_statement
     #st.write(SWOT_analysis(generate_report_section, ticker, mosaic_analysis, model))
     #st.write("Investment Recommendations")
     #st.write(investment_recommendations_messages(generate_report_section, ticker, mosaic_analysis, model))
-
+    report = "\n".join(report_parts)
     # Convert report to HTML if it's a DataFrame
     if isinstance(report, pd.DataFrame):
         report = report.to_html()
@@ -76,7 +76,6 @@ def generate_investment_report(ticker, generate_report_section, income_statement
     # Display a download button for the PDF file
     st.download_button('Download PDF', pdf_content, 'application/pdf', 'report.pdf')
 
-    return pdf
 
 def main():
     st.title("Investment Report Generator")
