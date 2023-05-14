@@ -74,7 +74,7 @@ def generate_investment_report(ticker, generate_report_section, income_statement
         st.write("File 'report.pdf' not found")
 
     # Display a download button for the PDF file
-    st.download_button('Download PDF', pdf_content, 'application/pdf', 'report.pdf')
+    st.download_button('Download PDF', pdf_content,  'report.pdf')
 
 
 def main():
