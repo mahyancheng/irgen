@@ -52,9 +52,26 @@ def generate_investment_report(ticker, generate_report_section, income_statement
     #st.write("Investment Recommendations")
     #st.write(investment_recommendations_messages(generate_report_section, ticker, mosaic_analysis, model))
 
+    # Convert report to HTML if it's a DataFrame
+    if isinstance(report, pd.DataFrame):
+        report = report.to_html()
+
+    # Convert report to PDF
+    try:
+        pdfkit.from_string(report, 'report.pdf')
+    except Exception as e:
+        st.write(f"Error creating PDF: {e}")
+
+    # Check the current working directory
+    cwd = os.getcwd()
+    st.write(f"Current working directory: {cwd}")
+
     # Read the PDF file as bytes
-    with open("report.pdf", "rb") as f:
-        pdf_content = f.read()
+    try:
+        with open("report.pdf", "rb") as f:
+            pdf_content = f.read()
+    except FileNotFoundError:
+        st.write("File 'report.pdf' not found")
 
     # Display a download button for the PDF file
     st.download_button('Download PDF', pdf_content, 'application/pdf', 'report.pdf')
