@@ -52,12 +52,12 @@ def generate_investment_report(ticker, generate_report_section, income_statement
     #st.write("Investment Recommendations")
     #st.write(investment_recommendations_messages(generate_report_section, ticker, mosaic_analysis, model))
 
-    report = "\n".join(report_parts)
-    # Convert report to PDF
-    pdfkit.from_string(report, 'report.pdf')
+    # Read the PDF file as bytes
+    with open("report.pdf", "rb") as f:
+        pdf_content = f.read()
 
-    with open("report.pdf","r") as file:
-        pdf = file.read()
+    # Display a download button for the PDF file
+    st.download_button('Download PDF', pdf_content, 'application/pdf', 'report.pdf')
 
     return pdf
 
