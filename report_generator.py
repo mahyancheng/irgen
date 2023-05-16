@@ -1,12 +1,13 @@
 import subprocess
 import sys
 
-subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4","matplotlib", "numpy", "lxml", "tabulate", "openai", "pdfkit", "weasyprint","wkhtmltopdf","yfinance"])
+subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4","plotly","matplotlib", "numpy", "lxml", "tabulate", "openai", "pdfkit", "weasyprint","wkhtmltopdf","yfinance"])
 import pdfkit
 import base64
 import matplotlib.pyplot as plt
 import numpy as np
-
+import plotly.graph_objects as go
+from plotly.io import to_image
 
 import os
 import streamlit as st
@@ -21,9 +22,10 @@ api_key = '6G6DT6CCRO8UWZ39'
 def generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model ,get_price_change):
     report_parts = []  # Initialize the report_parts list
     # Plot the price change
+    # Plot the price change
     price_change_data = get_price_change(ticker)
-    st.line_chart(price_change_data)
-    #report_parts.append(st.line_chart(price_change_data))
+    # Include the saved image in the report_parts
+    report_parts.append(f'<img src="{ticker}_vs_sp500.png" alt="Price Change Chart">')
     st.write("Company Overview")
     st.write(company_overview(generate_report_section, ticker, mosaic_analysis, model))
     report_parts.append(company_overview(generate_report_section, ticker, mosaic_analysis, model))
