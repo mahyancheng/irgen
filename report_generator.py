@@ -21,7 +21,7 @@ def generate_investment_report(ticker, generate_report_section, income_statement
     # Plot the price change
     price_change_data = get_price_change(ticker)
     st.line_chart(price_change_data)
-    #report_parts.append(get_price_change.to_html())
+    report_parts.append(get_price_change.to_html())
     #st.write("Company Overview")
     #st.write(company_overview(generate_report_section, ticker, mosaic_analysis, model))
     #report_parts.append(company_overview(generate_report_section, ticker, mosaic_analysis, model))
