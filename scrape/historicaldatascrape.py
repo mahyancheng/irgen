@@ -141,12 +141,12 @@ def get_price_change(ticker):
     sp500_data = sp500.history(period='1y')
 
     # Calculate the price change
-    stock_data['Price Change'] = stock_data['Close'].pct_change()
-    sp500_data['Price Change'] = sp500_data['Close'].pct_change()
+    stock_data['Cumulative Price Change'] = stock_data['Close'].pct_change().cumsum()
+    sp500_data['Cumulative Price Change'] = sp500_data['Close'].pct_change().cumsum()
 
     # Merge the two datasets
     data = pd.DataFrame()
-    data[ticker] = stock_data['Price Change']
-    data['S&P 500'] = sp500_data['Price Change']
+    data[ticker] = stock_data['Cumulative Price Change']
+    data['S&P 500'] = sp500_data['Cumulative Price Change']
 
     return data
