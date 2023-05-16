@@ -16,14 +16,16 @@ from prod.report_section import *
 
 api_key = '6G6DT6CCRO8UWZ39'
 
-def generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model):
+def generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model ,get_price_change):
     report_parts = []  # Initialize the report_parts list
-    st.write("Company Overview")
-    st.write(company_overview(generate_report_section, ticker, mosaic_analysis, model))
-    report_parts.append(company_overview(generate_report_section, ticker, mosaic_analysis, model))
-    st.write("Industry Analysis")
-    st.write(industry_analysis(generate_report_section, ticker, mosaic_analysis, model))
-    report_parts.append(industry_analysis(generate_report_section, ticker, mosaic_analysis, model))
+    get_price_change(ticker)
+    #report_parts.append(get_price_change.to_html())
+    #st.write("Company Overview")
+    #st.write(company_overview(generate_report_section, ticker, mosaic_analysis, model))
+    #report_parts.append(company_overview(generate_report_section, ticker, mosaic_analysis, model))
+    #st.write("Industry Analysis")
+    #st.write(industry_analysis(generate_report_section, ticker, mosaic_analysis, model))
+    #report_parts.append(industry_analysis(generate_report_section, ticker, mosaic_analysis, model))
     st.write("Valuation")
     income_statement_df, balance_sheet_df, cash_flow_df = display_valuation(income_statement_data, balance_sheet_data, cash_flow_data)
 
@@ -38,21 +40,21 @@ def generate_investment_report(ticker, generate_report_section, income_statement
     st.write("Cash Flow Statement:")
     st.table(cash_flow_df)
     report_parts.append(cash_flow_df.to_html())
-    st.write("Financial Analysis")
-    st.write(financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model))
-    report_parts.append(financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model))
-    st.write("Investment Thesis")
-    st.write(investment_thesis(generate_report_section, ticker, mosaic_analysis, model))
-    report_parts.append(investment_thesis(generate_report_section, ticker, mosaic_analysis, model))
-    st.write("Risk Analysis")
-    st.write(risk_analysis(generate_report_section, ticker, mosaic_analysis, model))
-    report_parts.append(risk_analysis(generate_report_section, ticker, mosaic_analysis, model))
-    st.write("SWOT Analysis")
-    st.write(SWOT_analysis(generate_report_section, ticker, mosaic_analysis, model))
-    report_parts.append(SWOT_analysis(generate_report_section, ticker, mosaic_analysis, model))
-    st.write("Investment Recommendations")
-    st.write(investment_recommendations_messages(generate_report_section, ticker, mosaic_analysis, model))
-    report_parts.append(investment_recommendations_messages(generate_report_section, ticker, mosaic_analysis, model))
+    #st.write("Financial Analysis")
+    #st.write(financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model))
+    #report_parts.append(financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model))
+    #st.write("Investment Thesis")
+    #st.write(investment_thesis(generate_report_section, ticker, mosaic_analysis, model))
+    #report_parts.append(investment_thesis(generate_report_section, ticker, mosaic_analysis, model))
+    #st.write("Risk Analysis")
+    #st.write(risk_analysis(generate_report_section, ticker, mosaic_analysis, model))
+    #report_parts.append(risk_analysis(generate_report_section, ticker, mosaic_analysis, model))
+    #st.write("SWOT Analysis")
+    #st.write(SWOT_analysis(generate_report_section, ticker, mosaic_analysis, model))
+    #report_parts.append(SWOT_analysis(generate_report_section, ticker, mosaic_analysis, model))
+    #st.write("Investment Recommendations")
+    #st.write(investment_recommendations_messages(generate_report_section, ticker, mosaic_analysis, model))
+    #report_parts.append(investment_recommendations_messages(generate_report_section, ticker, mosaic_analysis, model))
     report = "\n".join(report_parts)
     
     # Convert report to PDF
@@ -87,6 +89,8 @@ def main():
         # Scrape Yahoo Finance and Google analysis data
         yahoo_analysis = scrape_yahoo_finance_news(ticker)
         google_analysis = scrape_google_news(ticker)
+
+        
         
         income_statement_data = pd.DataFrame(filter_last_five_years(get_financial_data(api_key, "INCOME_STATEMENT", ticker)))
         balance_sheet_data = pd.DataFrame(filter_last_five_years(get_financial_data(api_key, "BALANCE_SHEET", ticker)))
@@ -94,8 +98,7 @@ def main():
 
    
         # Generate the investment report
-        report = generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model)
+        report = generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model, get_price_change)
 
 if __name__ == '__main__':
     main()
-
