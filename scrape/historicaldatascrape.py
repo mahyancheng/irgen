@@ -5,6 +5,7 @@ import streamlit as st
 import plotly.graph_objects as go
 from plotly.io import to_image
 from datetime import datetime
+from datetime import timedelta
 from tabulate import tabulate
 
 def get_financial_data(api_key, function, ticker):
