@@ -1,1 +1,3 @@
 wkhtmltopdf
+plotly
+kaleido
