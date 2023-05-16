@@ -1,9 +1,11 @@
 import subprocess
 import sys
 
-subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4", "lxml", "tabulate", "openai", "pdfkit", "weasyprint","wkhtmltopdf","yfinance"])
+subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4","matplotlib", "numpy", "lxml", "tabulate", "openai", "pdfkit", "weasyprint","wkhtmltopdf","yfinance"])
 import pdfkit
 import base64
+import matplotlib.pyplot as plt
+import numpy as np
 
 
 import os
@@ -21,7 +23,7 @@ def generate_investment_report(ticker, generate_report_section, income_statement
     # Plot the price change
     price_change_data = get_price_change(ticker)
     st.line_chart(price_change_data)
-    report_parts.append(get_price_change.to_html())
+    report_parts.append(st.savefig("line_chart.png"))
     #st.write("Company Overview")
     #st.write(company_overview(generate_report_section, ticker, mosaic_analysis, model))
     #report_parts.append(company_overview(generate_report_section, ticker, mosaic_analysis, model))
