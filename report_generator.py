@@ -1,7 +1,7 @@
 import subprocess
 import sys
 
-subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4","plotly","matplotlib", "numpy", "lxml", "tabulate", "openai", "pdfkit", "weasyprint","wkhtmltopdf","yfinance"])
+subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4","plotly","kaleido","matplotlib", "numpy", "lxml", "tabulate", "openai", "pdfkit", "weasyprint","wkhtmltopdf","yfinance"])
 import pdfkit
 import base64
 import matplotlib.pyplot as plt
