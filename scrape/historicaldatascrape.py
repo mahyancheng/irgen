@@ -128,3 +128,25 @@ def display_valuation(income_statement_data, balance_sheet_data, cash_flow_data)
 
     return income_statement_df, balance_sheet_df, cash_flow_df
 
+import yfinance as yf
+import pandas as pd
+
+def get_price_change(ticker):
+    # Get the data for the stock
+    stock = yf.Ticker(ticker)
+    stock_data = stock.history(period='1y')
+
+    # Get the data for the S&P 500
+    sp500 = yf.Ticker('^GSPC')
+    sp500_data = sp500.history(period='1y')
+
+    # Calculate the price change
+    stock_data['Price Change'] = stock_data['Close'].pct_change()
+    sp500_data['Price Change'] = sp500_data['Close'].pct_change()
+
+    # Merge the two datasets
+    data = pd.DataFrame()
+    data[ticker] = stock_data['Price Change']
+    data['S&P 500'] = sp500_data['Price Change']
+
+    return data
