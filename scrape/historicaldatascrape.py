@@ -2,6 +2,8 @@ import os
 import requests
 import pandas as pd
 import streamlit as st
+import plotly.graph_objects as go
+from plotly.io import to_image
 from datetime import datetime
 from tabulate import tabulate
 
@@ -132,21 +134,41 @@ import yfinance as yf
 import pandas as pd
 
 def get_price_change(ticker):
+    end_date = datetime.now()
+    start_date = end_date - timedelta(days=365)
+    df1 = yf.download(ticker, start=start_date, end=end_date)['Adj Close']
+    df2 = yf.download('^GSPC', start=start_date, end=end_date)['Adj Close']
+
+    df1 = df1 / df1[0] - 1
+    df2 = df2 / df2[0] - 1
+    df = pd.concat([df1, df2], axis=1)
+    df.columns = [ticker, 'S&P 500']
+    df = df.fillna(0)
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=df.index, y=df[ticker], mode='lines', name=ticker))
+    fig.add_trace(go.Scatter(x=df.index, y=df['S&P 500'], mode='lines', name='S&P 500'))
+
+    # Save the figure as a static PNG image
+    fig.write_image(f"{ticker}_vs_sp500.png")
+    return df
+
+#def get_price_change(ticker):
     # Get the data for the stock
-    stock = yf.Ticker(ticker)
-    stock_data = stock.history(period='1y')
+    #stock = yf.Ticker(ticker)
+    #stock_data = stock.history(period='1y')
 
     # Get the data for the S&P 500
-    sp500 = yf.Ticker('^GSPC')
-    sp500_data = sp500.history(period='1y')
+    #sp500 = yf.Ticker('^GSPC')
+    #sp500_data = sp500.history(period='1y')
 
     # Calculate the price change
-    stock_data['Cumulative Price Change'] = stock_data['Close'].pct_change().cumsum()
-    sp500_data['Cumulative Price Change'] = sp500_data['Close'].pct_change().cumsum()
+    #stock_data['Cumulative Price Change'] = stock_data['Close'].pct_change().cumsum()
+    #sp500_data['Cumulative Price Change'] = sp500_data['Close'].pct_change().cumsum()
 
     # Merge the two datasets
-    data = pd.DataFrame()
-    data[ticker] = stock_data['Cumulative Price Change']
-    data['S&P 500'] = sp500_data['Cumulative Price Change']
+    #data = pd.DataFrame()
+    #data[ticker] = stock_data['Cumulative Price Change']
+    #data['S&P 500'] = sp500_data['Cumulative Price Change']
 
-    return data
+    #return data
