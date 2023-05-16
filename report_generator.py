@@ -24,8 +24,7 @@ def generate_investment_report(ticker, generate_report_section, income_statement
     # Plot the price change
     # Plot the price change
     price_change_data = get_price_change(ticker)
-    # Include the saved image in the report_parts
-    report_parts.append(f'<img src="{ticker}_vs_sp500.png" alt="Price Change Chart">')
+    st.line_chart(price_change_data)
     #st.write("Company Overview")
     #st.write(company_overview(generate_report_section, ticker, mosaic_analysis, model))
     #report_parts.append(company_overview(generate_report_section, ticker, mosaic_analysis, model))
