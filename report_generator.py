@@ -6,8 +6,8 @@ import pdfkit
 import base64
 import matplotlib.pyplot as plt
 import numpy as np
-import plotly.graph_objects as go
-from plotly.io import to_image
+#import plotly.graph_objects as go
+#from plotly.io import to_image
 
 import os
 import streamlit as st
