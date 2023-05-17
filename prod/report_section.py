@@ -81,7 +81,7 @@ def calculate_financial_ratios(ticker, get_financial_data, api_key, function):
 
 # Financial Analysis
 def financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model, get_financial_data, api_key, function):
-    financial_ratios = calculate_financial_ratios(ticker, get_financial_data, api_key, function="BALANCE_SHEET")
+    financial_ratios = calculate_financial_ratios(ticker, get_financial_data, api_key, function="BALANCE_SHEET"),calculate_financial_ratios(ticker, get_financial_data, api_key, function="INCOME_STATEMENT")
 
     
     financial_analysis_messages = [
