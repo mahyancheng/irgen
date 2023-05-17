@@ -80,8 +80,9 @@ def calculate_financial_ratios(ticker, get_financial_data, api_key, function):
     }
 
 # Financial Analysis
-def financial_analysis(generate_report_section, ticker, balance_sheet_data, income_statement_data,model):
-    financial_ratios = calculate_financial_ratios(balance_sheet_data, income_statement_data)
+def financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model, get_financial_data, api_key):
+    financial_ratios = calculate_financial_ratios(ticker, get_financial_data, api_key, function="BALANCE_SHEET")
+
     
     financial_analysis_messages = [
         {"role": "system", "content": "You are a hedge fund investment analyst."},
