@@ -50,8 +50,8 @@ def industry_analysis(generate_report_section,ticker,mosaic_analysis,model):
 
 def calculate_financial_ratios(ticker, get_financial_data, api_key, function):
     # Recall the API function to fetch fresh data
-    balance_sheet_data = pd.DataFrame(get_financial_data(api_key, function="BALANCE_SHEET", ticker))
-    income_statement_data = pd.DataFrame(get_financial_data(api_key, function="INCOME_STATEMENT", ticker))
+    balance_sheet_data = pd.DataFrame(get_financial_data(api_key, ticker, function="BALANCE_SHEET"))
+    income_statement_data = pd.DataFrame(get_financial_data(api_key, ticker, function="INCOME_STATEMENT"))
 
     def to_float(value):
         return 0.0 if value is None or value == 'None' else float(value)
