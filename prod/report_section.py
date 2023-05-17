@@ -4,6 +4,7 @@ from tabulate import tabulate
 from scrape.yahoo_finance_scrape import *
 from scrape.google_scrape import *
 from scrape.historicaldatascrape import *
+import pandas as pd
 
 # GPT-4 API key
 #openai.api_key = "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"
@@ -46,29 +47,37 @@ def industry_analysis(generate_report_section,ticker,mosaic_analysis,model):
     return generate_report_section("Industry Analysis", industry_analysis_messages,model)
 
 # Valuation
-def calculate_financial_ratios(income_statement_data, balance_sheet_data):
-    current_assets = balance_sheet_data.iloc[-1]['totalCurrentAssets']
-    current_liabilities = balance_sheet_data.iloc[-1]['totalCurrentLiabilities']
 
-    inventory = balance_sheet_data.iloc[-1]['inventory']
-    inventory = 0.0 if inventory == 'None' else float(inventory)
+def calculate_financial_ratios(ticker, get_financial_data, api_key):
+    # Recall the API function to fetch fresh data
+    balance_sheet_data = pd.DataFrame(get_financial_data(api_key, "BALANCE_SHEET", ticker))
+    income_statement_data = pd.DataFrame(get_financial_data(api_key, "INCOME_STATEMENT", ticker))
 
-    quick_ratio = (float(current_assets) - inventory) / float(current_liabilities)
+    def to_float(value):
+        return 0.0 if value is None or value == 'None' else float(value)
 
-    total_debt = float(balance_sheet_data.iloc[-1]['longTermDebt']) + float(balance_sheet_data.iloc[-1]['shortTermDebt'])
-    total_assets = float(balance_sheet_data.iloc[-1]['totalAssets'])
-    debt_ratio = total_debt / total_assets
+    current_assets = to_float(balance_sheet_data.iloc[-1]['totalCurrentAssets'])
+    current_liabilities = to_float(balance_sheet_data.iloc[-1]['totalCurrentLiabilities'])
 
-    ebit = float(income_statement_data.iloc[-1]['operatingIncome'])
-    interest_expense = float(income_statement_data.iloc[-1]['interestExpense'])
-    interest_coverage_ratio = ebit / interest_expense
+    inventory = to_float(balance_sheet_data.iloc[-1]['inventory'])
+    quick_ratio = (current_assets - inventory) / current_liabilities if current_liabilities != 0 else None
+
+    long_term_debt = to_float(balance_sheet_data.iloc[-1]['longTermDebt'])
+    short_term_debt = to_float(balance_sheet_data.iloc[-1]['shortTermDebt'])
+    total_debt = long_term_debt + short_term_debt
+
+    total_assets = to_float(balance_sheet_data.iloc[-1]['totalAssets'])
+    debt_ratio = total_debt / total_assets if total_assets != 0 else None
+
+    ebit = to_float(income_statement_data.iloc[-1]['operatingIncome'])
+    interest_expense = to_float(income_statement_data.iloc[-1]['interestExpense'])
+    interest_coverage_ratio = ebit / interest_expense if interest_expense != 0 else None
 
     return {
         "Quick Ratio": quick_ratio,
         "Debt Ratio": debt_ratio,
         "Interest Coverage Ratio": interest_coverage_ratio,
     }
-
 
 # Financial Analysis
 def financial_analysis(generate_report_section, ticker, balance_sheet_data, income_statement_data,model):
