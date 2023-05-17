@@ -48,11 +48,7 @@ def industry_analysis(generate_report_section,ticker,mosaic_analysis,model):
 
 # Valuation
 
-def calculate_financial_ratios(ticker, get_financial_data, api_key, function):
-    # Recall the API function to fetch fresh data
-    balance_sheet_data = pd.DataFrame(get_financial_data(api_key, ticker, function="BALANCE_SHEET"))
-    income_statement_data = pd.DataFrame(get_financial_data(api_key, ticker, function="INCOME_STATEMENT"))
-
+def calculate_financial_ratios(income_statement_data, balance_sheet_data):
     def to_float(value):
         return 0.0 if value is None or value == 'None' else float(value)
 
@@ -79,10 +75,10 @@ def calculate_financial_ratios(ticker, get_financial_data, api_key, function):
         "Interest Coverage Ratio": interest_coverage_ratio,
     }
 
-# Financial Analysis
-def financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model, get_financial_data, api_key, function):
-    financial_ratios = calculate_financial_ratios(ticker, get_financial_data, api_key, function="BALANCE_SHEET"),calculate_financial_ratios(ticker, get_financial_data, api_key, function="INCOME_STATEMENT")
 
+# Financial Analysis
+def financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model):
+    financial_ratios = calculate_financial_ratios( income_statement_data, balance_sheet_data)
     
     financial_analysis_messages = [
         {"role": "system", "content": "You are a hedge fund investment analyst."},
