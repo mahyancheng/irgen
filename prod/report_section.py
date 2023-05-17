@@ -48,7 +48,7 @@ def industry_analysis(generate_report_section,ticker,mosaic_analysis,model):
 
 # Valuation
 
-def calculate_financial_ratios(ticker, get_financial_data):
+def calculate_financial_ratios(ticker, get_financial_data, api_key):
     # Recall the API function to fetch fresh data
     balance_sheet_data = pd.DataFrame(get_financial_data(api_key, "BALANCE_SHEET", ticker))
     income_statement_data = pd.DataFrame(get_financial_data(api_key, "INCOME_STATEMENT", ticker))
