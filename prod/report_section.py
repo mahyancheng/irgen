@@ -77,7 +77,7 @@ def calculate_financial_ratios(income_statement_data, balance_sheet_data):
 
 
 # Financial Analysis
-def financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model):
+def financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model, calculate_financial_ratios):
     financial_ratios = calculate_financial_ratios( income_statement_data, balance_sheet_data)
     
     financial_analysis_messages = [
