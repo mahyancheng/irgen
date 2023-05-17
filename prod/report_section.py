@@ -47,18 +47,17 @@ def industry_analysis(generate_report_section,ticker,mosaic_analysis,model):
 
 # Valuation
 
-
 def calculate_financial_ratios(income_statement_data, balance_sheet_data):
     current_assets = balance_sheet_data.iloc[-1]['totalCurrentAssets']
     current_liabilities = balance_sheet_data.iloc[-1]['totalCurrentLiabilities']
-    quick_ratio = (float(current_assets) - float(balance_sheet_data[-1]['inventory'])) / float(current_liabilities)
+    quick_ratio = (float(current_assets) - float(balance_sheet_data.iloc[-1]['inventory'])) / float(current_liabilities)
 
-    total_debt = float(balance_sheet_data.iloc[-1]['longTermDebt']) + float(balance_sheet_data[-1]['shortTermDebt'])
+    total_debt = float(balance_sheet_data.iloc[-1]['longTermDebt']) + float(balance_sheet_data.iloc[-1]['shortTermDebt'])
     total_assets = float(balance_sheet_data.iloc[-1]['totalAssets'])
     debt_ratio = total_debt / total_assets
 
-    ebit = float(income_statement_data[-1]['operatingIncome'])
-    interest_expense = float(income_statement_data[-1]['interestExpense'])
+    ebit = float(income_statement_data.iloc[-1]['operatingIncome'])
+    interest_expense = float(income_statement_data.iloc[-1]['interestExpense'])
     interest_coverage_ratio = ebit / interest_expense
 
     return {
