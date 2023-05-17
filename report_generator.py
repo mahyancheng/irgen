@@ -102,7 +102,7 @@ def main():
         cash_flow_data = pd.DataFrame(filter_last_five_years(get_financial_data(api_key, "CASH_FLOW", ticker)))
  
         # Generate the investment report
-        report = generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model ,calculate_financial_ratios)
+        report = generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model ,get_price_change, calculate_financial_ratios)
 
 if __name__ == '__main__':
     main()
