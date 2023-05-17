@@ -100,6 +100,7 @@ def main():
         income_statement_data = pd.DataFrame(filter_last_five_years(get_financial_data(api_key, "INCOME_STATEMENT", ticker)))
         balance_sheet_data = pd.DataFrame(filter_last_five_years(get_financial_data(api_key, "BALANCE_SHEET", ticker)))
         cash_flow_data = pd.DataFrame(filter_last_five_years(get_financial_data(api_key, "CASH_FLOW", ticker)))
+        financial_ratios = calculate_financial_ratios(ticker, get_financial_data, api_key, function="BALANCE_SHEET"),calculate_financial_ratios(ticker, get_financial_data, api_key, function="INCOME_STATEMENT")
 
    
         # Generate the investment report
