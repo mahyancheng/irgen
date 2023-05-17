@@ -2,8 +2,8 @@ import os
 import requests
 import pandas as pd
 import streamlit as st
-import plotly.graph_objects as go
-from plotly.io import to_image
+#import plotly.graph_objects as go
+#from plotly.io import to_image
 from datetime import datetime
 from datetime import timedelta
 from tabulate import tabulate
