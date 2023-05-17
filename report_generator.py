@@ -19,7 +19,7 @@ from prod.report_section import *
 
 api_key = '6G6DT6CCRO8UWZ39'
 
-def generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model ,get_price_change, get_financial_data, api_key, function):
+def generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model ,get_price_change, calculate_financial_ratios):
     report_parts = []  # Initialize the report_parts list
     # Plot the price change
     st.write(f"Stock price of {ticker} performance compared to S&P500")
@@ -46,8 +46,8 @@ def generate_investment_report(ticker, generate_report_section, income_statement
     st.table(cash_flow_df)
     report_parts.append(cash_flow_df.to_html())
     st.write("Financial Analysis")
-    st.write(financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model, get_financial_data))
-    report_parts.append(financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model, get_financial_data))
+    st.write(financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model, calculate_financial_ratios))
+    report_parts.append(financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model, calculate_financial_ratios))
     #st.write("Investment Thesis")
     #st.write(investment_thesis(generate_report_section, ticker, mosaic_analysis, model))
     #report_parts.append(investment_thesis(generate_report_section, ticker, mosaic_analysis, model))
@@ -100,11 +100,9 @@ def main():
         income_statement_data = pd.DataFrame(filter_last_five_years(get_financial_data(api_key, "INCOME_STATEMENT", ticker)))
         balance_sheet_data = pd.DataFrame(filter_last_five_years(get_financial_data(api_key, "BALANCE_SHEET", ticker)))
         cash_flow_data = pd.DataFrame(filter_last_five_years(get_financial_data(api_key, "CASH_FLOW", ticker)))
-        financial_ratios = calculate_financial_ratios(ticker, get_financial_data, api_key, function="BALANCE_SHEET"),calculate_financial_ratios(ticker, get_financial_data, api_key, function="INCOME_STATEMENT")
-
-   
+ 
         # Generate the investment report
-        report = generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model ,get_price_change, get_financial_data)
+        report = generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model ,calculate_financial_ratios)
 
 if __name__ == '__main__':
     main()
