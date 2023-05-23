@@ -96,11 +96,7 @@ def main():
         google_analysis = scrape_google_news(ticker)
 
         
-        
-        income_statement_data = pd.DataFrame(filter_last_five_years(get_financial_data(  ticker)))
-        balance_sheet_data = pd.DataFrame(filter_last_five_years(get_financial_data( ticker)))
-        cash_flow_data = pd.DataFrame(filter_last_five_years(get_financial_data(  ticker)))
- 
+        income_statement_data, balance_sheet_data, cash_flow_data = get_financial_data(ticker)
         # Generate the investment report
         report = generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model ,get_price_change, calculate_financial_ratios)
 
