@@ -2,22 +2,18 @@ import os
 import requests
 import pandas as pd
 import streamlit as st
+import yahoo_fin.stock_info as si
 #import plotly.graph_objects as go
 #from plotly.io import to_image
 from datetime import datetime
 from datetime import timedelta
 from tabulate import tabulate
 
-def get_financial_data(api_key, function, ticker):
-    base_url = "https://www.alphavantage.co/query"
-    params = {
-        "function": function,
-        "symbol": ticker,
-        "apikey": api_key,
-    }
-    response = requests.get(base_url, params=params)
-    return response.json()
-
+def get_financial_data(ticker):
+    income_statement_data = si.get_income_statement(ticker)
+    balance_sheet_data = si.get_balance_sheet(ticker)
+    cash_flow_data = si.get_cash_flow(ticker)
+    return income_statement_data, balance_sheet_data, cash_flow_data
 def filter_last_five_years(data):
     if 'annualReports' not in data:
         return {}
