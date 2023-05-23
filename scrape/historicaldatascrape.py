@@ -11,7 +11,7 @@ from tabulate import tabulate
 import yfinance as yf
 import pandas as pd
 
-POLYGON_API_KEY = 'your_polygon_api_key'
+POLYGON_API_KEY = 'ZH9gEYrngPNI7yfpGJxTdm4s2fmeQMIo'
 
 def get_financial_data(ticker):
     try:
@@ -150,16 +150,29 @@ def display_valuation(income_statement_data, balance_sheet_data, cash_flow_data)
  #   return df
 
 def get_price_change(ticker):
+    # Define the date range for the past year
+    end_date = datetime.now()
+    start_date = end_date - timedelta(days=365)
+    start_date_str = start_date.strftime('%Y-%m-%d')
+    end_date_str = end_date.strftime('%Y-%m-%d')
+
     # Get the data for the stock
-    stock = yf.Ticker(ticker)
-    stock_data = stock.history(period='1y')
+    url = f"https://api.polygon.io/v2/aggs/ticker/{ticker}/range/1/day/{start_date_str}/{end_date_str}?apiKey={POLYGON_API_KEY}"
+    response = requests.get(url)
+    stock_data = pd.DataFrame(response.json()['results'])
+    stock_data['date'] = pd.to_datetime(stock_data['t'], unit='ms')
+    stock_data.set_index('date', inplace=True)
+
     # Get the data for the S&P 500
-    sp500 = yf.Ticker('^GSPC')
-    sp500_data = sp500.history(period='1y')
+    url = f"https://api.polygon.io/v2/aggs/ticker/^GSPC/range/1/day/{start_date_str}/{end_date_str}?apiKey={POLYGON_API_KEY}"
+    response = requests.get(url)
+    sp500_data = pd.DataFrame(response.json()['results'])
+    sp500_data['date'] = pd.to_datetime(sp500_data['t'], unit='ms')
+    sp500_data.set_index('date', inplace=True)
 
     # Calculate the price change
-    stock_data['Cumulative Price Change'] = stock_data['Close'].pct_change().cumsum()
-    sp500_data['Cumulative Price Change'] = sp500_data['Close'].pct_change().cumsum()
+    stock_data['Cumulative Price Change'] = stock_data['c'].pct_change().cumsum()
+    sp500_data['Cumulative Price Change'] = sp500_data['c'].pct_change().cumsum()
 
     # Merge the two datasets
     data = pd.DataFrame()
