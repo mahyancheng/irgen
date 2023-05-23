@@ -8,12 +8,16 @@ import yahoo_fin.stock_info as si
 from datetime import datetime
 from datetime import timedelta
 from tabulate import tabulate
-
 def get_financial_data(ticker):
-    income_statement_data = si.get_income_statement(ticker)
-    balance_sheet_data = si.get_balance_sheet(ticker)
-    cash_flow_data = si.get_cash_flow(ticker)
-    return income_statement_data, balance_sheet_data, cash_flow_data
+    try:
+        income_statement_data = si.get_income_statement(ticker)
+        balance_sheet_data = si.get_balance_sheet(ticker)
+        cash_flow_data = si.get_cash_flow(ticker)
+        return income_statement_data, balance_sheet_data, cash_flow_data
+    except Exception as e:
+        print(f"Error fetching data for {ticker}: {e}")
+        return None, None, None
+
 def filter_last_five_years(data):
     if 'annualReports' not in data:
         return {}
