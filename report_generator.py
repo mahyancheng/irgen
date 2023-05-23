@@ -17,7 +17,7 @@ from scrape.historicaldatascrape import *
 from prod.report_section import *
 
 
-api_key = '6G6DT6CCRO8UWZ39'
+#api_key = '6G6DT6CCRO8UWZ39'
 
 def generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model ,get_price_change, calculate_financial_ratios):
     report_parts = []  # Initialize the report_parts list
