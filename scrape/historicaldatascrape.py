@@ -15,7 +15,7 @@ def get_financial_data(ticker):
     try:
         stock = yf.Ticker(ticker)
         
-        income_statement_data = stock.financials
+        income_statement_data = stock.income_stmt
         balance_sheet_data = stock.balance_sheet
         cash_flow_data = stock.cashflow
         
