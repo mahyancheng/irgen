@@ -8,7 +8,7 @@ import pandas as pd
 
 # GPT-4 API key
 #openai.api_key = "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"
-api_key = '6G6DT6CCRO8UWZ39'
+#api_key = '6G6DT6CCRO8UWZ39'
 
 
 # Function to generate report sections
