@@ -8,26 +8,21 @@ import yahoo_fin.stock_info as si
 from datetime import datetime
 from datetime import timedelta
 from tabulate import tabulate
+import yfinance as yf
+import pandas as pd
+
 def get_financial_data(ticker):
     try:
-        income_statement_data = si.get_income_statement(ticker)
-        balance_sheet_data = si.get_balance_sheet(ticker)
-        cash_flow_data = si.get_cash_flow(ticker)
+        stock = yf.Ticker(ticker)
+        
+        income_statement_data = stock.financials
+        balance_sheet_data = stock.balance_sheet
+        cash_flow_data = stock.cashflow
+        
         return income_statement_data, balance_sheet_data, cash_flow_data
     except Exception as e:
         print(f"Error fetching data for {ticker}: {e}")
         return None, None, None
-
-
-def filter_last_five_years(data):
-    if 'annualReports' not in data:
-        return {}
-
-    current_year = datetime.now().year
-    five_years_ago = current_year - 5
-    filtered_data = [report for report in data['annualReports'] if int(report['fiscalDateEnding'].split("-")[0]) >= five_years_ago]
-    return filtered_data
-
 # Example usage
 
 #api_key = '6G6DT6CCRO8UWZ39'
@@ -132,8 +127,7 @@ def display_valuation(income_statement_data, balance_sheet_data, cash_flow_data)
 
     return income_statement_df, balance_sheet_df, cash_flow_df
 
-import yfinance as yf
-import pandas as pd
+
 
 #def get_price_change(ticker):
 #    end_date = datetime.now()
