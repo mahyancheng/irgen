@@ -18,6 +18,7 @@ def get_financial_data(ticker):
         print(f"Error fetching data for {ticker}: {e}")
         return None, None, None
 
+
 def filter_last_five_years(data):
     if 'annualReports' not in data:
         return {}
