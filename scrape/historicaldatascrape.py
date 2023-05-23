@@ -11,22 +11,22 @@ from tabulate import tabulate
 import yfinance as yf
 import pandas as pd
 
+POLYGON_API_KEY = 'your_polygon_api_key'
+
 def get_financial_data(ticker):
     try:
-        stock = yf.Ticker(ticker)
+        url = f"https://api.polygon.io/vX/reference/financials/{ticker}?apiKey={POLYGON_API_KEY}"
+        response = requests.get(url)
+        data = response.json()
         
-        income_statement_data = stock.income_stmt
-        balance_sheet_data = stock.balance_sheet
-        cash_flow_data = stock.cashflow
+        income_statement_data = pd.DataFrame(data['results']['incomeStatement'])
+        balance_sheet_data = pd.DataFrame(data['results']['balanceSheet'])
+        cash_flow_data = pd.DataFrame(data['results']['cashFlows'])
         
         return income_statement_data, balance_sheet_data, cash_flow_data
     except Exception as e:
         print(f"Error fetching data for {ticker}: {e}")
         return None, None, None
-# Example usage
-
-#api_key = '6G6DT6CCRO8UWZ39'
-
 
 
 def display_valuation(income_statement_data, balance_sheet_data, cash_flow_data):
