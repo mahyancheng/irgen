@@ -63,30 +63,52 @@ def generate_investment_report(ticker, generate_report_section, income_statement
     report = "\n".join(report_parts)
     
     # Convert report to PDF
-    try:
-        pdfkit.from_string(report, 'report.pdf')
-    except Exception as e:
-        st.write(f"Error creating PDF: {e}")
+#    try:
+#        pdfkit.from_string(report, 'report.pdf')
+#    except Exception as e:
+#        st.write(f"Error creating PDF: {e}")
 
     # Check the current working directory
-    cwd = os.getcwd()
-    st.write(f"Current working directory: {cwd}")
+#    cwd = os.getcwd()
+#    st.write(f"Current working directory: {cwd}")
 
     # Read the PDF file as bytes
-    try:
-        with open("report.pdf", "rb") as f:
-            pdf_content = f.read()
-    except FileNotFoundError:
-        st.write("File 'report.pdf' not found")
+ #   try:
+#        with open("report.pdf", "rb") as f:
+#            pdf_content = f.read()
+#    except FileNotFoundError:
+#        st.write("File 'report.pdf' not found")
 
     # Display a download button for the PDF file
-    st.download_button('Download PDF', pdf_content,  'report.pdf')
+#    st.download_button('Download PDF', pdf_content,  'report.pdf')
 
+#def main():
+ #   st.title("Investment Report Generator")
+ #   openai.api_key = st.text_input("Enter the openai api key (gpt-4):")
+  #  ticker = st.text_input("Enter the stock ticker:").upper()
+   # model = "gpt-4"
+    
+    #if st.button('Generate Report'):
+        
+        # Scrape Yahoo Finance and Google analysis data
+       # yahoo_analysis = scrape_yahoo_finance_news(ticker)
+       # google_analysis = scrape_google_news(ticker)
+
+        #income_statement_data, balance_sheet_data, cash_flow_data = get_financial_data(ticker)
+
+        # Check if the data is not None before generating the report
+       # if income_statement_data is not None and balance_sheet_data is not None and cash_flow_data is not None:
+            # Generate the investment report
+       #     report = generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model ,get_price_change, calculate_financial_ratios)
+      #  else:
+      #      st.write("Error fetching financial data. Please try again later.")
+
+    
 def main():
     st.title("Investment Report Generator")
     openai.api_key = st.text_input("Enter the openai api key (gpt-4):")
     ticker = st.text_input("Enter the stock ticker:").upper()
-    model = "gpt-4"
+    model = "gpt-3.5-turbo"
     
     if st.button('Generate Report'):
         
@@ -94,14 +116,16 @@ def main():
         yahoo_analysis = scrape_yahoo_finance_news(ticker)
         google_analysis = scrape_google_news(ticker)
 
-        income_statement_data, balance_sheet_data, cash_flow_data = get_financial_data(ticker)
+        
+        
+        income_statement_data = pd.DataFrame(filter_last_five_years(get_financial_data(api_key, "INCOME_STATEMENT", ticker)))
+        balance_sheet_data = pd.DataFrame(filter_last_five_years(get_financial_data(api_key, "BALANCE_SHEET", ticker)))
+        cash_flow_data = pd.DataFrame(filter_last_five_years(get_financial_data(api_key, "CASH_FLOW", ticker)))
 
-        # Check if the data is not None before generating the report
-        if income_statement_data is not None and balance_sheet_data is not None and cash_flow_data is not None:
-            # Generate the investment report
-            report = generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model ,get_price_change, calculate_financial_ratios)
-        else:
-            st.write("Error fetching financial data. Please try again later.")
+   
+        # Generate the investment report
+        report = generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model, get_price_change)
 
 if __name__ == '__main__':
     main()
+
