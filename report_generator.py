@@ -19,12 +19,12 @@ from prod.report_section import *
 
 #api_key = '6G6DT6CCRO8UWZ39'
 
-def generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model ,get_price_change, calculate_financial_ratios):
+def generate_investment_report(ticker, generate_report_section, income_statement_data, balance_sheet_data, cash_flow_data, mosaic_analysis, model ,get_price_change):
     report_parts = []  # Initialize the report_parts list
-    # Plot the price change
     st.write(f"Stock price of {ticker} performance compared to S&P500")
     price_change_data = get_price_change(ticker)
     st.line_chart(price_change_data)
+    #report_parts.append(get_price_change.to_html())
     #st.write("Company Overview")
     #st.write(company_overview(generate_report_section, ticker, mosaic_analysis, model))
     #report_parts.append(company_overview(generate_report_section, ticker, mosaic_analysis, model))
@@ -47,7 +47,7 @@ def generate_investment_report(ticker, generate_report_section, income_statement
     report_parts.append(cash_flow_df.to_html())
     st.write("Financial Analysis")
     st.write(financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model, calculate_financial_ratios))
-    report_parts.append(financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model, calculate_financial_ratios))
+    #report_parts.append(financial_analysis(generate_report_section, ticker, income_statement_data, balance_sheet_data, model))
     #st.write("Investment Thesis")
     #st.write(investment_thesis(generate_report_section, ticker, mosaic_analysis, model))
     #report_parts.append(investment_thesis(generate_report_section, ticker, mosaic_analysis, model))
