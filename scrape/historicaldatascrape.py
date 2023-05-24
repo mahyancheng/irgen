@@ -2,31 +2,32 @@ import os
 import requests
 import pandas as pd
 import streamlit as st
-import yahoo_fin.stock_info as si
-#import plotly.graph_objects as go
-#from plotly.io import to_image
 from datetime import datetime
-from datetime import timedelta
 from tabulate import tabulate
-import yfinance as yf
-import pandas as pd
 
-POLYGON_API_KEY = 'ZH9gEYrngPNI7yfpGJxTdm4s2fmeQMIo'
+def get_financial_data(api_key, function, ticker):
+    base_url = "https://www.alphavantage.co/query"
+    params = {
+        "function": function,
+        "symbol": ticker,
+        "apikey": api_key,
+    }
+    response = requests.get(base_url, params=params)
+    return response.json()
 
-def get_financial_data(ticker):
-    try:
-        url = f"https://api.polygon.io/vX/reference/financials/{ticker}?apiKey={POLYGON_API_KEY}"
-        response = requests.get(url)
-        data = response.json()
-        
-        income_statement_data = pd.DataFrame(data['results']['incomeStatement'])
-        balance_sheet_data = pd.DataFrame(data['results']['balanceSheet'])
-        cash_flow_data = pd.DataFrame(data['results']['cashFlows'])
-        
-        return income_statement_data, balance_sheet_data, cash_flow_data
-    except Exception as e:
-        print(f"Error fetching data for {ticker}: {e}")
-        return None, None, None
+def filter_last_five_years(data):
+    if 'annualReports' not in data:
+        return {}
+
+    current_year = datetime.now().year
+    five_years_ago = current_year - 5
+    filtered_data = [report for report in data['annualReports'] if int(report['fiscalDateEnding'].split("-")[0]) >= five_years_ago]
+    return filtered_data
+
+# Example usage
+
+api_key = '6G6DT6CCRO8UWZ39'
+
 
 
 def display_valuation(income_statement_data, balance_sheet_data, cash_flow_data):
@@ -127,56 +128,26 @@ def display_valuation(income_statement_data, balance_sheet_data, cash_flow_data)
 
     return income_statement_df, balance_sheet_df, cash_flow_df
 
-
-
-#def get_price_change(ticker):
-#    end_date = datetime.now()
- #   start_date = end_date - timedelta(days=365)
-  #  df1 = yf.download(ticker, start=start_date, end=end_date)['Adj Close']
-   # df2 = yf.download('^GSPC', start=start_date, end=end_date)['Adj Close']
-
-    #df1 = df1 / df1[0] - 1
-    #df2 = df2 / df2[0] - 1
-    #df = pd.concat([df1, df2], axis=1)
-    #df.columns = [ticker, 'S&P 500']
-    #df = df.fillna(0)
-
-    #fig = go.Figure()
-    #fig.add_trace(go.Scatter(x=df.index, y=df[ticker], mode='lines', name=ticker))
-    #fig.add_trace(go.Scatter(x=df.index, y=df['S&P 500'], mode='lines', name='S&P 500'))
-
-    # Save the figure as a static PNG image
-#    fig.write_image(f"{ticker}_vs_sp500.png")
- #   return df
+import yfinance as yf
+import pandas as pd
 
 def get_price_change(ticker):
-    # Define the date range for the past year
-    end_date = datetime.now()
-    start_date = end_date - timedelta(days=365)
-    start_date_str = start_date.strftime('%Y-%m-%d')
-    end_date_str = end_date.strftime('%Y-%m-%d')
-
     # Get the data for the stock
-    url = f"https://api.polygon.io/v2/aggs/ticker/{ticker}/range/1/day/{start_date_str}/{end_date_str}?apiKey={POLYGON_API_KEY}"
-    response = requests.get(url)
-    stock_data = pd.DataFrame(response.json()['results'])
-    stock_data['date'] = pd.to_datetime(stock_data['t'], unit='ms')
-    stock_data.set_index('date', inplace=True)
+    stock = yf.Ticker(ticker)
+    stock_data = stock.history(period='1y')
 
     # Get the data for the S&P 500
-    url = f"https://api.polygon.io/v2/aggs/ticker/^GSPC/range/1/day/{start_date_str}/{end_date_str}?apiKey={POLYGON_API_KEY}"
-    response = requests.get(url)
-    sp500_data = pd.DataFrame(response.json()['results'])
-    sp500_data['date'] = pd.to_datetime(sp500_data['t'], unit='ms')
-    sp500_data.set_index('date', inplace=True)
+    sp500 = yf.Ticker('^GSPC')
+    sp500_data = sp500.history(period='1y')
 
     # Calculate the price change
-    stock_data['Cumulative Price Change'] = stock_data['c'].pct_change().cumsum()
-    sp500_data['Cumulative Price Change'] = sp500_data['c'].pct_change().cumsum()
+    stock_data['Price Change'] = stock_data['Close'].pct_change().cumsum()
+    sp500_data['Price Change'] = sp500_data['Close'].pct_change().cumsum()
+
 
     # Merge the two datasets
     data = pd.DataFrame()
-    data[ticker] = stock_data['Cumulative Price Change']
-    data['S&P 500'] = sp500_data['Cumulative Price Change']
+    data[ticker] = stock_data['Price Change']
+    data['S&P 500'] = sp500_data['Price Change']
 
     return data
