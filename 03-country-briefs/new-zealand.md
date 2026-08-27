@@ -106,8 +106,8 @@ mountain on them.
 | Mt Dobson Ski Area | 400 ha ski area within a ~10,500 ha concession | DOC concession + Fairlie workshop freehold | NZ$2.8 m + GST (May 2025) | **FAIL** | Cheapest control of a 2,000 m NZ mountain — but you buy a company and a licence |
 | Ōhau Snow Fields + Lodge | 145.2 ha + 10.1 ha | Concession + freehold lodge | NZ$50 m reported | **FAIL** | Terrain is a concession |
 | Glenrock Station | 14,062 ha | **Three Crown pastoral leases; no freehold identified** | Deadline 18 Jun 2026, since "under offer" | **FAIL** | All leasehold |
-| Mount Algidus Station | 22,120 ha | Partly leasehold (LINZ holds a Crown pastoral page) | $50 m+ sought (Nov 2025) | Unresolved | Fails Gate 6 on price regardless |
-| Northburn Station | 13,177 ha | ~8,200 ha freehold | $30–35 m indication | Partial | Freehold extent good; price ~$2,600/ha is *market*, but the alpine reach of the freehold is unverified |
+| Mount Algidus Station | 22,120 ha | **Unresolved** — LINZ holds a Crown pastoral land page for "Mt Algidus", so at least partly leasehold | $50 m+ sought (Nov 2025) — **$2,260/ha, the cheapest trophy per hectare found** | Unresolved | The freehold/lease split is the most valuable single unknown in the NZ workstream |
+| Northburn Station | 13,177 ha | ~8,200 ha freehold | $30–35 m indication | Partial | ⚠️ **Two perpetual QEII covenants run with the title** and will constrain development. On freehold alone that is **$3,660–4,270/ha — top of band** |
 | Glazebrook Station | 8,877 ha | **100 % freehold** | Never published; campaign closed Apr 2021 | Partial | Full freehold and diversified income — **but stale by five years** |
 | Upton Fells Station | 7,857 ha | **100 % freehold** | Not published; listed ~Oct 2023 | **FAIL on terrain** | Peaks only 1,250 m; majority below 850 m |
 | Balmoral | 4,902 ha | **Only ~391 ha (8 %) freehold** | Not published | **FAIL** | Effectively a leasehold purchase |
@@ -160,6 +160,28 @@ explicitly:
 Three diligence items could not be verified and would decide it: **concession term,
 snowmaking capability, and water rights.** `[U]`
 
+## The bottom line on New Zealand terrain
+
+**No New Zealand property was confirmed in which freehold title reaches genuine alpine terrain
+above 1,600 m.** `[E]`
+
+Mt Lyford — the only freehold ski field identified — tops out around 1,460–1,516 m. Every
+higher ski mountain in the country sits on a concession. If the >1,600 m screen is treated as
+absolute, New Zealand may have **no qualifying open-market property at all**, and the
+remaining options are to accept a concession over the terrain, accept sub-1,600 m freehold, or
+run the unexplored leads below.
+
+### The most promising unexplored ground
+
+**The Inland Kaikōura Range.** It is the one part of New Zealand that plausibly combines
+**freehold tenure with genuine alpine elevation** — Tapuae-o-Uenuku reaches 2,885 m, and the
+Marlborough stations in that country (Glazebrook 8,877 ha 100 % freehold, Upton Fells 7,857 ha
+100 % freehold, Middlehurst, Muzzle, Bluff) came through history with far more freehold than
+the Canterbury and Otago runs. This ground was **not reached before the research budget ran
+out** and is the highest-value target for the next pass. `[E]`
+
+---
+
 ## Conclusion on New Zealand
 
 New Zealand offers superb alpine terrain, a stable legal system, cheap extensive land and an
@@ -204,7 +226,9 @@ Detail, precedent and the full statutory basis are in `new-zealand-regulatory.md
   and elevation all unverified.
 - **Lake Ohau Station / Ohau Downs Station** — Sotheby's listings exist; entirely unresearched.
 - **Glazebrook Station** — 8,877 ha, 100 % freehold, diversified income; 2021 outcome unknown.
-- **Fox Peak** — the second freehold ski area; ownership, area and availability unresearched.
+- **Fox Peak** — the second freehold ski area; the private landowner was never identified.
+- **Inland Kaikōura ranges** — freehold *and* genuinely alpine; the most promising unexplored ground in New Zealand.
+- **Porters Alpine Resort tenure**; the Ben Ohau station cluster; Raglan, Black Birch and Richmond ranges; Tukino; Manganui — all unresearched.
 - **NZ sale prices are routinely withheld** ("sells for undisclosed sum" is a recurring
   headline). Only one clean completed high-country comparable was obtained. Closing this gap
   needs transaction-specific searching.
