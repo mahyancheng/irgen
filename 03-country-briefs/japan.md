@@ -185,9 +185,18 @@ gondolas. The pre-1997 classification put T-bars, rope tows, J-bars and poma lif
 of 特殊索道. `[P1]`
 
 > **The regulatory step-change in Japan, as in New Zealand, is `no lift → any lift`.** A Phase 1
-> built on snowcat, snowmobile and touring avoids the 索道 regime, its technical manager and
-> operator qualifications, and its periodic inspections, entirely. `[E — pending confirmation
-> of the treatment of 専用索道, private/dedicated ropeways]`
+> built on snowcat, snowmobile and touring avoids the 索道 regime — MLIT permission per
+> installation, an 索道技術管理者, a 安全統括管理者, annual inspection and a published safety
+> report — entirely. `[P1]`
+
+Whether a genuinely private, non-paying **専用索道** falls outside 索道事業 could not be
+verified, and the expectation is that **bundling lift access into a paid stay converts it into
+a regulated business.** `[U]` Either way the conclusion is the same: **the regulatory case for
+"snowcat-only, indefinitely" in Japan is very strong.**
+
+Full detail, including the negligible holding costs, the 農地法 block on ranching, the 保安林
+fork, the inheritance-tax exposure and the 車馬等乗入れ規制区域 risk that would kill the snowcat
+model outright, is in `japan-regulatory.md`.
 
 ## 9. Open items
 
