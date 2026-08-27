@@ -164,15 +164,38 @@ snowmaking capability, and water rights.** `[U]`
 
 New Zealand offers superb alpine terrain, a stable legal system, cheap extensive land and an
 established high-country farming economy. It fails this mandate on tenure and screening, not
-on quality. To proceed here the client would have to accept one of three compromises:
+on quality.
 
-1. **Buy control, not ownership** (a concession-based ski business such as Mt Dobson), or
-2. **Buy freehold at a subdivision-driven price** (Mt Lyford), abandoning the cheap-rural-asset
-   premise, or
-3. **Reframe the application as a commercial tourism development** to satisfy the benefit
-   test — abandoning the low-CAPEX, private-access premise.
+**But there is one clean route, and it is worth stating precisely because it is the only place
+in the study where the client's actual thesis — low intensity, private access — can be
+consented on its own terms.**
 
-Each compromise breaks a different leg of the thesis. That is the finding.
+**Section 16 of the Overseas Investment Act 2005** permits consent for non-residential
+sensitive land where the applicant **intends to reside in New Zealand indefinitely**. On this
+pathway the **benefit test does not apply and public access cannot be imposed as a condition**
+— the OIO's own position, as reported in the Mt White Station consent. `[P2]`
+
+The price is emigration: move within 12 months of consent, become ordinarily resident within
+two years (permanent residence + 12 months resided + **183 days present** + **New Zealand tax
+resident**, meaning worldwide income taxed at up to 39 %), or face a forced sale. The Active
+Investor Plus visa supplies the visa limb only — its 21-day presence requirement is
+deliberately incompatible with the 183 days needed for tax residence.
+
+So the New Zealand decision reduces to four options, and the client must pick one:
+
+1. **Emigrate.** The s 16 pathway. The only structure that permits the thesis intact. Cost:
+   relocation and New Zealand tax residence on worldwide income.
+2. **Buy control, not ownership** — a concession-based ski business such as Mt Dobson at
+   NZ$2.8 m + GST. Cheap, real, and not ownership.
+3. **Buy freehold at a subdivision-driven price** — Mt Lyford, abandoning the cheap-rural-asset
+   premise.
+4. **Reframe as a commercial tourism development** to satisfy the benefit test — abandoning
+   the low-CAPEX, private-access premise, and expecting to concede registered public access.
+
+Options 2–4 each break a different leg of the thesis. Option 1 keeps the thesis whole and
+charges for it in a different currency: residence and tax. **That is the New Zealand finding.**
+
+Detail, precedent and the full statutory basis are in `new-zealand-regulatory.md`.
 
 ## Open items for the next pass
 
