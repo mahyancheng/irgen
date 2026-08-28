@@ -28,15 +28,25 @@ cd web && python3 -m http.server 8000
 ### GitHub Pages
 
 `.github/workflows/pages.yml` deploys **`web/` only** — the dossiers, prices and vendor details
-elsewhere in this repository are not uploaded. To turn it on:
+elsewhere in this repository are not uploaded. The workflow is on `main` and ready.
 
-1. Merge this branch to `main`.
-2. Repo **Settings → Pages → Source: GitHub Actions**.
-3. The workflow runs on any push touching `web/`, or on demand via **Actions → Deploy terrain
-   viewer to Pages → Run workflow**.
+**One setting has to be changed by hand, and it cannot be automated:**
 
-To deploy from this branch before merging, also add it under **Settings → Environments →
-github-pages → Deployment branches**, which defaults to the default branch only.
+> **Settings → Pages → Source: GitHub Actions**
+> https://github.com/mahyancheng/irgen/settings/pages
+
+The workflow then runs on any push touching `web/`, or on demand from **Actions → Deploy terrain
+viewer to Pages → Run workflow**. The site lands at
+`https://mahyancheng.github.io/irgen/`.
+
+`actions/configure-pages` accepts `enablement: true`, which looks like it would remove this step. It
+does not work here: the workflow `GITHUB_TOKEN` can *deploy* to Pages but cannot *create* the Pages
+site, which needs repository admin rights. It fails with `Resource not accessible by integration`.
+Enabling it with a PAT carrying admin scope would work, but storing an admin token as a secret to
+save one click is a bad trade.
+
+Pages also requires a public repository on GitHub Free; on a private repository it needs Pro, Team
+or Enterprise.
 
 > **A GitHub Pages site is public** — including from a private repository, on every plan below
 > Enterprise Cloud. Publishing it puts the caldera under evaluation on the open web. It carries no
