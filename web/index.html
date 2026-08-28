@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Akaigawa Terrain Viewer</title>
+<meta name="description" content="Real GSI topography, slope raster and DEM cross-sections for the Akaigawa caldera, Hokkaido.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{
+  --paper:#EFF1EA; --panel:#E5E8DC; --sunk:#DBDFD0;
+  --ink:#1B1F1B; --ink2:#4C534A; --ink3:#767D72;
+  --rule:#C8CFBC; --rule2:#B3BCA4;
+  --contour:#8A7248;
+  --snow:#2F6478; --snow2:#6C9BAD; --snow-wash:#D6E2E7;
+  --flag:#9C4C36; --flag-wash:#EFDFD9;
+  --ok:#4A6B3E;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#121513; --panel:#1A1E1B; --sunk:#22261F;
+    --ink:#E9ECE3; --ink2:#A6AE9F; --ink3:#7C8478;
+    --rule:#333A31; --rule2:#454E42;
+    --contour:#A98D5C;
+    --snow:#79B0C6; --snow2:#4E7E93; --snow-wash:#1D2B32;
+    --flag:#CE8168; --flag-wash:#32211B;
+    --ok:#8FB47F;
+  }
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"IBM Plex Sans","Noto Sans JP",system-ui,sans-serif; font-size:15px;
+  display:flex; flex-direction:column; -webkit-font-smoothing:antialiased;
+}
+.jp{font-family:"Noto Sans JP","IBM Plex Sans",sans-serif}
+.mono{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums}
+
+/* header */
+header{
+  background:var(--panel); border-bottom:2px solid var(--ink);
+  padding:12px 18px; display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 18px; flex:none;
+}
+h1{
+  font-family:"Zilla Slab",Georgia,serif; font-size:1.32rem; font-weight:700;
+  letter-spacing:-.01em; margin:0;
+}
+h1 .jp{font-weight:500; color:var(--ink2); font-size:.82em; margin-left:8px}
+.meta{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink3); letter-spacing:.06em}
+
+/* layout */
+.shell{flex:1; display:flex; min-height:0}
+#map{flex:1; min-width:0; background:var(--sunk)}
+aside{
+  width:370px; flex:none; background:var(--panel); border-left:1px solid var(--rule2);
+  overflow-y:auto; padding:18px;
+}
+@media (max-width:900px){
+  .shell{flex-direction:column}
+  aside{width:auto; border-left:none; border-top:1px solid var(--rule2); max-height:52vh}
+  #map{min-height:46vh}
+}
+
+h2{
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--ink3); font-weight:600;
+  margin:0 0 10px; padding-bottom:6px; border-bottom:1px solid var(--rule);
+}
+h2:not(:first-child){margin-top:26px}
+p{margin:0 0 12px; line-height:1.55}
+.dim{color:var(--ink2); font-size:13.5px}
+
+/* controls */
+.layers{display:flex; flex-direction:column; gap:7px}
+label.row{display:flex; align-items:center; gap:9px; cursor:pointer; font-size:14px}
+label.row input{accent-color:var(--snow); width:15px; height:15px; cursor:pointer}
+select{
+  width:100%; padding:7px 9px; font:inherit; font-size:14px;
+  background:var(--paper); color:var(--ink); border:1px solid var(--rule2); border-radius:2px;
+}
+.slider{display:flex; align-items:center; gap:10px; margin-top:8px; font-size:12.5px; color:var(--ink3)}
+.slider input{flex:1; accent-color:var(--snow)}
+
+button{
+  font:inherit; font-weight:600; font-size:14px; cursor:pointer;
+  background:var(--snow); color:var(--paper); border:none; border-radius:2px;
+  padding:10px 14px; width:100%; letter-spacing:.01em;
+}
+button.ghost{background:transparent; color:var(--ink2); border:1px solid var(--rule2)}
+button:hover{filter:brightness(1.08)}
+button:focus-visible{outline:2px solid var(--snow); outline-offset:2px}
+.btns{display:flex; gap:8px; margin-top:4px}
+
+/* readout */
+.stat{display:flex; justify-content:space-between; gap:12px; padding:7px 0; border-bottom:1px solid var(--rule); font-size:14px}
+.stat b{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; font-weight:600}
+.verdict{padding:12px 14px; border-left:3px solid var(--ink3); background:var(--sunk); margin-top:14px; font-size:13.5px; line-height:1.5}
+.verdict.pass{border-left-color:var(--ok)} .verdict.near{border-left-color:var(--snow)} .verdict.fail{border-left-color:var(--flag)}
+.verdict b{display:block; margin-bottom:4px; font-family:"Zilla Slab",serif; font-size:1.05rem}
+
+#chart{width:100%; height:215px; display:block; margin-top:10px; background:var(--sunk); border:1px solid var(--rule)}
+
+.note{font-size:12.5px; color:var(--ink3); line-height:1.5}
+.note code{font-family:"IBM Plex Mono",monospace; font-size:11.5px; background:var(--sunk); padding:1px 4px; border-radius:2px}
+.known{font-size:13px; line-height:1.7}
+.known span{font-family:"IBM Plex Mono",monospace; color:var(--ink2)}
+
+.leaflet-container{font-family:"IBM Plex Sans","Noto Sans JP",sans-serif; background:var(--sunk)}
+.pill{
+  position:absolute; z-index:500; left:50%; transform:translateX(-50%); top:12px;
+  background:var(--ink); color:var(--paper); padding:7px 15px; border-radius:20px;
+  font-size:13px; font-weight:500; box-shadow:0 2px 10px rgba(0,0,0,.25); pointer-events:none;
+}
+.hide{display:none !important}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Akaigawa Terrain Viewer<span class="jp">赤井川カルデラ</span></h1>
+  <span class="meta">43°04′52″N 140°49′01″E · floor 138 m · rim 724.9 m</span>
+</header>
+
+<div class="shell">
+  <div id="map"></div>
+  <aside>
+
+    <h2>Base map</h2>
+    <select id="base">
+      <option value="pale">淡色地図 — pale, best for overlays</option>
+      <option value="std">標準地図 — contours, names, peak spot-heights</option>
+      <option value="seamlessphoto">全国最新写真 — aerial photography</option>
+    </select>
+
+    <h2>Terrain overlays</h2>
+    <div class="layers">
+      <label class="row"><input type="checkbox" id="ov-slope" checked> <span>傾斜量図 — slope gradient <span class="dim">(darker = steeper)</span></span></label>
+      <label class="row"><input type="checkbox" id="ov-hill"> <span>陰影起伏図 — hillshade</span></label>
+    </div>
+    <div class="slider">
+      <span>Opacity</span><input type="range" id="op" min="0" max="100" value="55"><span class="mono" id="opv">55%</span>
+    </div>
+
+    <h2>Measure a profile</h2>
+    <p class="dim">Click two points on the map — base and summit. The tool samples the GSI elevation model along the line and measures the real gradient.</p>
+    <div class="btns">
+      <button id="draw">Measure profile</button>
+      <button id="clear" class="ghost">Clear</button>
+    </div>
+
+    <div id="out" class="hide">
+      <canvas id="chart"></canvas>
+      <div class="stat"><span>Horizontal run</span><b id="s-run">—</b></div>
+      <div class="stat"><span>Relief, end to end</span><b id="s-rel">—</b></div>
+      <div class="stat"><span>Average gradient</span><b id="s-avg">—</b></div>
+      <div class="stat"><span>Steepest 300 m band</span><b id="s-300">—</b></div>
+      <div class="stat"><span>Steepest 100 m band</span><b id="s-100">—</b></div>
+      <div id="verdict" class="verdict"></div>
+    </div>
+
+    <h2>Known elevations</h2>
+    <p class="known">
+      <span class="jp">大黒山</span> <span>724.9 m</span> · rim high point<br>
+      <span class="jp">恵比寿山</span> <span>723 m</span><br>
+      <span class="jp">元服山</span> <span>477.3 m</span><br>
+      <span class="jp">丸山</span> <span>— unknown</span><br>
+      <span class="jp">石山</span> <span>— unknown</span><br>
+      Caldera floor <span>≈150 m</span> · village office <span>138.28 m</span>
+    </p>
+    <p class="note">Rim peaks run 元服山 → 大黒山 → 丸山 → 石山, north then counter-clockwise. 丸山 and 石山 sit on the <strong>south and south-west rim</strong>, whose inner faces look north to north-east — the aspects that hold snow. Neither elevation could be found on the open web. Switch to 標準地図 and read them off the map.</p>
+
+    <h2>Specification</h2>
+    <p class="note">
+      Target <strong>22–28°</strong> average over a band delivering <strong>~300 m</strong> of vertical.
+      Sustained pitches ceiling <strong>30°</strong> — above that the dry-slab avalanche band opens
+      (30–45°, peak 35–38°) and a conventional snowcat stops working (~25°).
+      Short benched pitches to 38° are acceptable; long continuous 33–40° faces are not.
+    </p>
+
+    <h2>Sources</h2>
+    <p class="note">
+      Tiles and elevation: 国土地理院 地理院タイル.<br>
+      Elevation API <code>getelevation.php</code>, DEM5A/5B where available, else DEM10B.<br>
+      No parcel boundary is drawn — the 地番 is unknown, so this shows the landform, not the property.
+    </p>
+
+  </aside>
+</div>
+
+<div id="pill" class="pill hide"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  var GSI = "https://cyberjapandata.gsi.go.jp/xyz/";
+  var ATTR = '出典：<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener">国土地理院</a>';
+  var CENTER = [43.0811, 140.8169];   // 赤井川村 village office
+
+  var map = L.map("map", { center: CENTER, zoom: 13, zoomControl: true });
+
+  function tl(id, ext, maxZ){
+    return L.tileLayer(GSI + id + "/{z}/{x}/{y}." + ext, {
+      attribution: ATTR, maxNativeZoom: maxZ, maxZoom: 18
+    });
+  }
+
+  var bases = {
+    pale:          tl("pale", "png", 18),
+    std:           tl("std", "png", 18),
+    seamlessphoto: tl("seamlessphoto", "jpg", 18)
+  };
+  var slope = tl("slopemap", "png", 15);
+  var hill  = tl("hillshademap", "png", 16);
+
+  var curBase = bases.pale.addTo(map);
+  slope.addTo(map);
+
+  // caldera reference ring — schematic, ~3.3 km radius
+  L.circle(CENTER, {
+    radius: 3300, color: "#2F6478", weight: 1.5, opacity: .65,
+    dashArray: "6 7", fill: false, interactive: false
+  }).addTo(map);
+  L.circleMarker(CENTER, {
+    radius: 5, color: "#1B1F1B", weight: 2, fillColor: "#EFF1EA", fillOpacity: 1
+  }).addTo(map).bindTooltip("赤井川村 · 138.28 m", { direction: "top" });
+
+  // ---- layer controls ----
+  var opEl = document.getElementById("op"), opv = document.getElementById("opv");
+  function applyOpacity(){
+    var v = opEl.value / 100;
+    slope.setOpacity(v); hill.setOpacity(v);
+    opv.textContent = opEl.value + "%";
+  }
+  opEl.addEventListener("input", applyOpacity);
+  applyOpacity();
+
+  document.getElementById("base").addEventListener("change", function(e){
+    map.removeLayer(curBase);
+    curBase = bases[e.target.value].addTo(map);
+    curBase.bringToBack();
+  });
+  document.getElementById("ov-slope").addEventListener("change", function(e){
+    e.target.checked ? slope.addTo(map) : map.removeLayer(slope);
+    applyOpacity();
+  });
+  document.getElementById("ov-hill").addEventListener("change", function(e){
+    e.target.checked ? hill.addTo(map) : map.removeLayer(hill);
+    applyOpacity();
+  });
+
+  // ---- geometry ----
+  function haversine(a, b){
+    var R = 6371000, t = Math.PI/180;
+    var dLat = (b[0]-a[0])*t, dLon = (b[1]-a[1])*t;
+    var s = Math.sin(dLat/2)*Math.sin(dLat/2) +
+            Math.cos(a[0]*t)*Math.cos(b[0]*t)*Math.sin(dLon/2)*Math.sin(dLon/2);
+    return 2*R*Math.asin(Math.sqrt(s));
+  }
+  function lerp(a, b, f){ return [a[0]+(b[0]-a[0])*f, a[1]+(b[1]-a[1])*f]; }
+  function deg(rad){ return rad*180/Math.PI; }
+
+  // ---- elevation ----
+  var DEM = "https://cyberjapandata2.gsi.go.jp/general/dem/scripts/getelevation.php";
+  function elevation(pt){
+    return fetch(DEM + "?lon=" + pt[1].toFixed(7) + "&lat=" + pt[0].toFixed(7) + "&outtype=JSON",
+                 { cache: "force-cache" })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){
+        if(!j) return null;
+        var e = parseFloat(j.elevation);
+        return isFinite(e) ? e : null;
+      })
+      .catch(function(){ return null; });
+  }
+
+  // bounded-concurrency map
+  function pool(items, worker, width){
+    var out = new Array(items.length), i = 0, active = 0;
+    return new Promise(function(resolve){
+      function next(){
+        if(i >= items.length && active === 0) return resolve(out);
+        while(active < width && i < items.length){
+          (function(k){
+            active++; i++;
+            worker(items[k], k).then(function(v){
+              out[k] = v; active--; next();
+            });
+          })(i);
+        }
+      }
+      next();
+    });
+  }
+
+  // ---- profile tool ----
+  var SAMPLES = 90;
+  var picking = false, pts = [], layer = L.layerGroup().addTo(map);
+  var pill = document.getElementById("pill");
+  var out = document.getElementById("out");
+
+  function say(t){
+    if(t === null){ pill.classList.add("hide"); return; }
+    pill.textContent = t; pill.classList.remove("hide");
+  }
+
+  document.getElementById("draw").addEventListener("click", function(){
+    picking = true; pts = []; layer.clearLayers(); out.classList.add("hide");
+    say("Click the base of the slope");
+    map.getContainer().style.cursor = "crosshair";
+  });
+
+  document.getElementById("clear").addEventListener("click", function(){
+    picking = false; pts = []; layer.clearLayers();
+    out.classList.add("hide"); say(null);
+    map.getContainer().style.cursor = "";
+  });
+
+  map.on("click", function(e){
+    var p = [e.latlng.lat, e.latlng.lng];
+
+    if(!picking){
+      elevation(p).then(function(el){
+        L.popup().setLatLng(e.latlng)
+          .setContent('<span style="font-family:IBM Plex Mono,monospace">' +
+            (el === null ? "elevation unavailable" : el.toFixed(1) + " m") + "</span>")
+          .openOn(map);
+      });
+      return;
+    }
+
+    pts.push(p);
+    L.circleMarker(e.latlng, { radius: 5, color: "#2F6478", weight: 2,
+      fillColor: "#fff", fillOpacity: 1 }).addTo(layer);
+
+    if(pts.length === 1){ say("Now click the top"); return; }
+
+    picking = false;
+    map.getContainer().style.cursor = "";
+    L.polyline([pts[0], pts[1]], { color: "#2F6478", weight: 3, opacity: .9 }).addTo(layer);
+    run(pts[0], pts[1]);
+  });
+
+  function run(a, b){
+    var total = haversine(a, b);
+    var idx = [];
+    for(var i = 0; i < SAMPLES; i++) idx.push(i);
+    say("Sampling elevation… 0/" + SAMPLES);
+
+    var done = 0;
+    pool(idx, function(i){
+      return elevation(lerp(a, b, i/(SAMPLES-1))).then(function(v){
+        done++; say("Sampling elevation… " + done + "/" + SAMPLES);
+        return v;
+      });
+    }, 6).then(function(els){
+      say(null);
+      var d = [], z = [];
+      for(var i = 0; i < els.length; i++){
+        if(els[i] === null) continue;
+        d.push(total * i/(SAMPLES-1)); z.push(els[i]);
+      }
+      if(z.length < 8){
+        document.getElementById("verdict").className = "verdict fail";
+        document.getElementById("verdict").innerHTML =
+          "<b>No elevation returned</b>The GSI elevation service did not answer. Likely causes: the line is outside Japan, the service is rate-limiting, or it refused the cross-origin request from this host. Retry, or check the browser console for a CORS error.";
+        out.classList.remove("hide");
+        return;
+      }
+      report(d, z, total);
+    });
+  }
+
+  // steepest band delivering `gain` metres of vertical
+  function steepest(d, z, gain){
+    var best = null;
+    for(var i = 0; i < z.length; i++){
+      for(var j = i+1; j < z.length; j++){
+        if(z[j] - z[i] >= gain){
+          var runm = d[j] - d[i];
+          if(runm > 0 && (best === null || runm < best.run))
+            best = { run: runm, from: z[i], to: z[j], gain: z[j]-z[i] };
+          break;
+        }
+      }
+    }
+    return best;
+  }
+
+  function fmtBand(bd, gain){
+    if(!bd) return "—";
+    return Math.round(bd.run) + " m → " + deg(Math.atan(gain / bd.run)).toFixed(1) + "°";
+  }
+
+  function report(d, z, total){
+    out.classList.remove("hide");
+    var lo = Math.min.apply(null, z), hi = Math.max.apply(null, z);
+    var relief = z[z.length-1] - z[0];
+    var avg = deg(Math.atan(Math.abs(relief) / total));
+
+    var b300 = steepest(d, z, 300), b100 = steepest(d, z, 100);
+
+    document.getElementById("s-run").textContent = Math.round(total) + " m";
+    document.getElementById("s-rel").textContent = (relief >= 0 ? "+" : "") + Math.round(relief) + " m";
+    document.getElementById("s-avg").textContent = avg.toFixed(1) + "°";
+    document.getElementById("s-300").textContent = fmtBand(b300, 300);
+    document.getElementById("s-100").textContent = fmtBand(b100, 100);
+
+    // verdict against the Rev 4 spec
+    var v = document.getElementById("verdict");
+    if(!b300){
+      var short = Math.round(hi - lo);
+      v.className = "verdict fail";
+      v.innerHTML = "<b>No 300 m band on this line</b>Total relief here is " + short +
+        " m. Either the line does not run from floor to rim, or this section of the caldera does not carry the vertical. Try a line to 大黒山 (724.9 m).";
+    } else {
+      var g = deg(Math.atan(300 / b300.run));
+      if(g >= 22 && g <= 30){
+        v.className = "verdict pass";
+        v.innerHTML = "<b>In specification — " + g.toFixed(1) + "°</b>300 m of vertical in " +
+          Math.round(b300.run) + " m of run, from " + Math.round(b300.from) + " m to " +
+          Math.round(b300.to) + " m. Inside the 22–28° target and under the 30° sustained ceiling.";
+      } else if(g >= 19 && g < 22){
+        v.className = "verdict near";
+        v.innerHTML = "<b>Marginal — " + g.toFixed(1) + "°</b>Just under the 22° target. Skiable, but the hill needs " +
+          Math.round(b300.run) + " m of run to give 300 m, against 743 m at 22°. Test other aspects before rejecting.";
+      } else if(g > 30){
+        v.className = "verdict fail";
+        v.innerHTML = "<b>Too steep sustained — " + g.toFixed(1) + "°</b>Above the 30° ceiling this enters the dry-slab avalanche band, and a conventional snowcat cannot work it. Acceptable only as short benched pitches with clean runout.";
+      } else {
+        v.className = "verdict fail";
+        v.innerHTML = "<b>Too flat — " + g.toFixed(1) + "°</b>Needs " + Math.round(b300.run) +
+          " m of run for 300 m of vertical. At 22° that would be 743 m. This aspect does not carry the gradient.";
+      }
+    }
+    lastProfile = { d: d, z: z, total: total, band: b300 };
+    draw(d, z, total, b300);
+  }
+
+  // ---- chart ----
+  function css(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+
+  function draw(d, z, total, band){
+    var c = document.getElementById("chart"), g = c.getContext("2d");
+    var dpr = window.devicePixelRatio || 1;
+    var W = c.clientWidth, H = c.clientHeight;
+    c.width = Math.round(W * dpr); c.height = Math.round(H * dpr);
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var L0 = 54, R0 = 14, T0 = 16, B0 = 34;
+    var lo = Math.min.apply(null, z), hi = Math.max.apply(null, z);
+    var pad = Math.max(12, (hi - lo) * 0.08);
+    lo -= pad; hi += pad;
+
+    var X = function(m){ return L0 + (m/total) * (W - L0 - R0); };
+    var Y = function(e){ return T0 + (1 - (e - lo)/(hi - lo)) * (H - T0 - B0); };
+
+    g.clearRect(0,0,W,H);
+    g.fillStyle = css("--sunk"); g.fillRect(0,0,W,H);
+
+    // band highlight
+    if(band){
+      var i0 = -1, i1 = -1;
+      for(var k = 0; k < z.length; k++){
+        if(i0 < 0 && z[k] >= band.from - 0.5) i0 = k;
+        if(z[k] >= band.to - 0.5){ i1 = k; break; }
+      }
+      if(i0 >= 0 && i1 > i0){
+        g.fillStyle = css("--snow"); g.globalAlpha = .15;
+        g.fillRect(X(d[i0]), T0, X(d[i1]) - X(d[i0]), H - T0 - B0);
+        g.globalAlpha = 1;
+      }
+    }
+
+    // grid
+    g.strokeStyle = css("--rule"); g.lineWidth = 1;
+    g.fillStyle = css("--ink3"); g.font = '11px "IBM Plex Mono", monospace';
+    g.textAlign = "right"; g.textBaseline = "middle";
+    var step = (hi - lo) > 500 ? 200 : (hi - lo) > 200 ? 100 : 50;
+    for(var e = Math.ceil(lo/step)*step; e <= hi; e += step){
+      g.beginPath(); g.moveTo(L0, Y(e)); g.lineTo(W - R0, Y(e)); g.stroke();
+      g.fillText(e + " m", L0 - 7, Y(e));
+    }
+
+    // ground
+    g.beginPath(); g.moveTo(X(d[0]), Y(z[0]));
+    for(var i = 1; i < z.length; i++) g.lineTo(X(d[i]), Y(z[i]));
+    g.lineTo(X(d[d.length-1]), H - B0); g.lineTo(X(d[0]), H - B0); g.closePath();
+    g.fillStyle = css("--contour"); g.globalAlpha = .22; g.fill(); g.globalAlpha = 1;
+
+    g.beginPath(); g.moveTo(X(d[0]), Y(z[0]));
+    for(var i2 = 1; i2 < z.length; i2++) g.lineTo(X(d[i2]), Y(z[i2]));
+    g.strokeStyle = css("--contour"); g.lineWidth = 2; g.stroke();
+
+    // x labels
+    g.textAlign = "center"; g.textBaseline = "top"; g.fillStyle = css("--ink3");
+    g.fillText("0", X(0), H - B0 + 8);
+    g.fillText(Math.round(total) + " m", X(total), H - B0 + 8);
+    g.textAlign = "left";
+    g.fillStyle = css("--ink2");
+    g.fillText("base " + Math.round(z[0]) + " m", L0, H - 14);
+    g.textAlign = "right";
+    g.fillText("top " + Math.round(z[z.length-1]) + " m", W - R0, H - 14);
+  }
+
+  var lastProfile = null;
+  window.addEventListener("resize", function(){
+    if(lastProfile && !out.classList.contains("hide"))
+      draw(lastProfile.d, lastProfile.z, lastProfile.total, lastProfile.band);
+  });
+
+  // redraw chart when the OS theme flips
+  if(window.matchMedia){
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function(){
+      if(!out.classList.contains("hide")) document.getElementById("clear").click();
+    });
+  }
+})();
+</script>
+</body>
+</html>
