@@ -1,5 +1,10 @@
 # Mandate revision 3: the farmstead model
 
+> **SUPERSEDED by `07-mandate-correction.md`.** This document describes the *touring* model, in
+> which the mountain is not owned. The client corrected the brief: the slope must be inside the
+> title. Retained as an accurate account of how the reference property operates, and as a fallback
+> if the corrected search fails.
+
 **The reference is Mountain Memories, 留寿都村 (Rusutsu-mura), Abuta-gun, Hokkaido** — a hosted
 ski-week lodge near Rusutsu Resort, easy reach of New Chitose Airport. `[P2/P3]` The client's
 reading of it: **an abandoned farm or ranch, bought outright, with a mountain behind it used for

@@ -1,29 +1,37 @@
 # Alpine ranch + private ski mountain — acquisition research
 
-An acquisition-grade search for a **large rural landholding whose own registered title contains
-skiable alpine terrain**, to be held cheaply as a ranch, farm or forest asset and skied
-privately before any commercial development.
+An acquisition-grade search for **freehold ranch-like land whose own registered title contains a
+skiable slope** — held cheaply as rural land, skied privately, with commercial development only if
+it is ever justified.
 
 **Client basis:** Malaysia-resident private buyer. All values in **MYR**.
 **Report date:** 27 August 2026.
 
 ---
 
-> ### ⚠️ Mandate revised — small-plot brief
+> ### ⚠️ Mandate corrected — own the slope
 >
-> The large-landholding requirement has been **dropped**. The target is now a **small private
-> ski mountain of roughly 40 ha with ~300 m of vertical**, benchmarked on 吉雪滑雪场 (Jixue, Jilin).
+> The brief is **freehold ranch-like land with the skiable slope inside the registered title**:
+> ~40 ha of skiable ground, **250–400 m of relief**, summit **400–900 m**, in a Hokkaido snow belt,
+> **outside** national and quasi-national park boundaries. Benchmarked on 吉雪滑雪场 (Jixue, Jilin).
 >
-> **Read [`01-screening/04-small-plot-revision.md`](01-screening/04-small-plot-revision.md) and
-> [`01-screening/05-shortlist-small-plot.md`](01-screening/05-shortlist-small-plot.md) first.**
-> The country briefs and the earlier shortlist were written for the large-landholding mandate and
-> are superseded where they conflict.
+> **Read [`01-screening/07-mandate-correction.md`](01-screening/07-mandate-correction.md) first.**
+> It supersedes the farmstead/touring model in `06-farmstead-model.md` and restates what the search
+> is actually testing for. Everything written against the *large alpine landholding* mandate — the
+> country briefs, `03-shortlist.md` — is superseded where it conflicts.
+>
+> **The key structural point:** this study spent most of its effort testing whether a private party
+> can own an **alpine summit**. The answer is largely no. But the client asked for a **hill** — and
+> in Hokkaido, hills on the margin of farmed lowland are exactly what passed into private fee under
+> the 1897 settlement grants. The corrected question has a materially better answer than the one
+> that was being asked.
 
 ## Start here
 
 | If you want… | Read |
 |---|---|
-| The answer | [`01-screening/03-shortlist.md`](01-screening/03-shortlist.md) |
+| **The mandate, as corrected** | [`01-screening/07-mandate-correction.md`](01-screening/07-mandate-correction.md) |
+| The shortlist (written pre-correction) | [`01-screening/05-shortlist-small-plot.md`](01-screening/05-shortlist-small-plot.md) |
 | Why the thesis needs adjusting | [The four findings](#the-four-findings-that-change-the-thesis), below |
 | The rules that decide each country | [`03-country-briefs/`](03-country-briefs/) |
 | What it costs to own and run | [`04-economics/`](04-economics/) |
