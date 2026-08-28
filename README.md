@@ -29,6 +29,7 @@ privately before any commercial development.
 | What it costs to own and run | [`04-economics/`](04-economics/) |
 | What to check before you offer | [`05-verification/02-pre-offer-checklist.md`](05-verification/02-pre-offer-checklist.md) |
 | What was ruled out, and why | [`99-rejected/register.md`](99-rejected/register.md) |
+| **The two Itoigawa ski areas, in full** | [`02-dossiers/itoigawa/`](02-dossiers/itoigawa/) — start with [`verdict.md`](02-dossiers/itoigawa/verdict.md) |
 
 ---
 
