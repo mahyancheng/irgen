@@ -9,6 +9,16 @@ privately before any commercial development.
 
 ---
 
+> ### ⚠️ Mandate revised — small-plot brief
+>
+> The large-landholding requirement has been **dropped**. The target is now a **small private
+> ski mountain of roughly 40 ha with ~300 m of vertical**, benchmarked on 吉雪滑雪场 (Jixue, Jilin).
+>
+> **Read [`01-screening/04-small-plot-revision.md`](01-screening/04-small-plot-revision.md) and
+> [`01-screening/05-shortlist-small-plot.md`](01-screening/05-shortlist-small-plot.md) first.**
+> The country briefs and the earlier shortlist were written for the large-landholding mandate and
+> are superseded where they conflict.
+
 ## Start here
 
 | If you want… | Read |
