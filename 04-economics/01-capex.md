@@ -1,6 +1,6 @@
 # Phase 1 CAPEX
 
-All figures NZ$, ex-GST, **excluding land**, with MYR at 2.41511. Every figure is a derived
+All figures NZ$, ex-GST, **excluding land**, with MYR at NZD 1 = 2.4000 (see `00-methodology/03-fx-basis.md`). Every figure is a derived
 estimate `[E]` — the research environment could not reach any dealer, supplier or industry
 source, so **these are a model structure with scaffolding numbers, not quotations.** The
 verification queue is in `04-economics/04-open-items.md`.
