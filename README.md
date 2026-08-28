@@ -39,7 +39,13 @@ over Munro summits.
 **This is why Gate 1 is tenure, not price.** A buyer who screens on snow or cost first will
 spend months on assets that can never satisfy the mandate.
 
-### 2. In New Zealand, the snow line and the freehold line were deliberately separated
+**And where the exception exists, the arbitrage is real.** Cielo Vista Ranch sold in 2017 with
+**83,368 deeded acres including Culebra Peak, 14,047 ft, at US$1,259 per acre** — *cheaper than
+USDA's mountain-region pastureland average of US$946*. Altitude is worth nothing to an
+agricultural bidder. **The constraint is supply, not price: this asset surfaces once every five
+to eight years, and land trusts and state agencies are the competing bidders.**
+
+### 2. In New Zealand, the snow line and the freehold line were deliberately separated — and "ranch or forest" is a choice, not a pair
 
 The snow screen wants a base at 1,500–1,600 m. Tenure review (1998–2022) **freeholded the low
 country and transferred the alpine tops to the Crown** — Godley Peaks freeholded 2,676 ha while
@@ -52,6 +58,12 @@ process, so there is no conversion path left.
 This is not a market accident. It is the direct result of 24 years of deliberate policy
 separating exactly the two things this mandate needs to combine — and it is only visible by
 reading the tenure and snow evidence together.
+
+**There is one escape, and it inverts what to buy.** Section 6(1) of the Overseas Investment Act
+defines farm land by **current use**, and **expressly carves out forestry**. So **grazing pulls a
+property into the hardest consent regime in the study; forestry does not** — and the test bites
+at the transaction, not the plan. **Buy a defunct ski area or a de-stocked alpine title, not a
+working station.**
 
 ### 3. A cheap alpine station is not a low-cost one
 
@@ -92,15 +104,29 @@ US$60k lift becomes **US$0.8–2.6 m installed — 70–100 % of new.**
 
 ## The shortlist, in one table
 
-| # | Target | Gate 1 (title) | Snow | Carry | Price | Status |
-|---:|---|---|---|---|---|---|
-| **1** | **Chile — Ñuble/Biobío cordillera, ~36 °S** | ✅ Freehold to the summit, **no consent regime** | ✅ Ranks first | ✅ Cheapest, 2–4× | ❓ Unknown | **Zero properties sourced** |
-| **2** | **NZ — Mt Lyford, 677 ha freehold** | ✅ Only confirmed NZ pass | ❌ ~1,460 m | ⚠️ | ❌ ~9× the land band | Status unknown since Nov 2024 |
-| **3** | **Japan — defunct ski area on 民有地** | ⚠️ Parcel by parcel | ⚠️ Screen base ≥700 m | ✅ **Near zero** | ✅ From RM 254,000 | 糸魚川市 公募 opens FY2026 |
-| **4** | **USA — deeded mountain ranch, MT/WY/ID/CO** | ✅ Uniquely certain | ✅ | ✅ Ag tax shield | ❌ Highest | **Zero properties sourced** |
+| # | Target | Area | Price | **MYR/ha** | Status |
+|---:|---|---|---|---:|---|
+| **1** | **Fundo Colbún–Curillinque** — Maule cordillera, Chile | **7,860 ha** | CLP 1.8 bn ≈ **RM 8.05 m** | **1,024** | Live. Unresolved 2× price contradiction; no title check |
+| **1b** | **Cordillera San Fabián–Coihueco** — Ñuble, Chile | **20,000 ha** | Not published | — | Live. **The highest-value phone call in the study** |
+| **1c** | **Nevados de Longaví** — Maule, Chile | — | Not for sale | — | Private freehold, ~1,000 m vertical. Owners open to a **commercial agreement, not a sale** |
+| **2** | **Mt Lyford** — North Canterbury, New Zealand | 677 ha | Never published | — | **Did not sell.** Succession trigger. Approach directly |
+| **3** | **Black Hawk Ranch** — Carbon County, Utah | **20,000 deeded acres** | US$35 m ≈ **RM 143.1 m** | 17,700 | Live. **1,067 m vertical, all deeded.** Verify the boundary |
+| **4** | A defunct ski area on private land, Japan | < 364 ha found | From **RM 254,000** | 11,430–50,040 | **Fails the landholding test on area** |
 
-**No property was verified as passing all six gates.** Full reasoning, bid discipline and next
-actions in [`01-screening/03-shortlist.md`](01-screening/03-shortlist.md).
+### Price, side by side
+
+| Jurisdiction | Mountain land | **MYR/ha** |
+|---|---|---:|
+| **Chile** | Cordillera block | **1,024–2,682** |
+| **New Zealand** | High country, verified band | **7,200** |
+| **Japan** | Remote interior 山林 | 11,430–50,040 |
+| **United States** | Deeded mountain | **17,700** |
+
+> **Chile is roughly 7× cheaper than New Zealand and 17× cheaper than the United States for
+> mountain land — in the jurisdiction with the fewest ownership restrictions of the four.**
+
+Full reasoning, bid discipline and next actions in
+[`01-screening/03-shortlist.md`](01-screening/03-shortlist.md).
 
 ---
 
@@ -124,13 +150,15 @@ actions in [`01-screening/03-shortlist.md`](01-screening/03-shortlist.md).
 ## Repository map
 
 ```
-00-methodology/     Mandate, evidence grading, FX and tax basis
-01-screening/       The six gates, the search universe, the shortlist
-03-country-briefs/  New Zealand, Japan, Chile, rest of world (+ regulatory annexes)
-04-economics/       Phase 1 CAPEX, carrying cost, income offsets, verification queue
-05-verification/    Title red flags by country, pre-offer checklist
+00-methodology/      Mandate, evidence grading, FX and tax basis
+01-screening/        The six gates, the search universe, the shortlist
+02-dossiers/         Sourced properties: Chile, USA, and NZ/Japan closeouts
+03-country-briefs/   New Zealand, Japan, Chile, rest of world (+ regulatory annexes)
+04-economics/        Phase 1 CAPEX, carrying cost, income, operating precedents
+05-verification/     Title red flags by country, pre-offer checklist
+06-sources/          Source register and the raw workstream files
 07-terrain-and-snow/ Snow framework, regional verdict, DEM/satellite workflow
-99-rejected/        What was screened out, and why
+99-rejected/         What was screened out, and why
 ```
 
 ## Evidence standard, and the limits of this pass
@@ -146,10 +174,13 @@ over:**
   NZ Sotheby's, LINZ, RNZ, Wikipedia, BATONZ, スキー凸凹研究所, JMA and every government domain
   attempted. Facts from those sources are carried at the grade of the secondary source that
   reported them.
-- The **web-search budget was exhausted** partway through. Seven of nine workstreams ran out
-  mid-task. **No Chilean or US property listings were obtained at all** — the two jurisdictions
-  the evidence points at hardest — and the economics and FX figures are model structure with
-  scaffolding numbers, not quotations.
+- The **web-search budget was exhausted twice**, once in each research phase. Chilean and US
+  sourcing were completed on the second pass, but **no property listing page was ever opened** —
+  every price below is a search-snippet broker claim. **No *rol*, no Conservador title, no
+  *deslindes* and no altitude range was obtained for any Chilean property**, and no plat for any
+  US one. FX and the Bank Negara limit are now verified from two sources each; **the economics
+  figures remain model structure with scaffolding numbers, not quotations.**
 
 **No title searches were ordered, and no site was visited.** `05-verification/` specifies
-exactly what to commission before an offer.
+exactly what to commission before an offer — and for the leading Chilean candidates, the
+Conservador's *deslindes* are the only document that answers whether the summit is in the title.
