@@ -60,7 +60,7 @@ back boundary runs uphill. It is not the Hidaka spine and it is not Niseko.
 | **Relief** | **250–400 m** from parcel low point to parcel high point. | 吉雪 benchmark: ~300 m vertical. |
 | **Summit elevation** | **400–900 m.** | High enough for snow in a Hokkaido snow belt; low enough to be private land and outside park designations. |
 | **Skiable area** | **~40 ha** of the holding at a workable gradient. Total holding may be larger. | 吉雪 benchmark. |
-| **Gradient** | Average ~19°; nothing critical above 33°. | Below the dry-slab avalanche band; groomable by cat if it ever comes to that. |
+| **Gradient** | **Average 22–28°; sustained pitches ≤ 30°; short pitches to 38° if benched.** See `07-terrain-and-snow/06-gradient-spec.md` — **revised upward from 19°.** | Caps set by the dry-slab band (30–45°, peak 35–38°) and by conventional-snowcat limit (~25°), not by skiability. Steeper is *preferred*: it converts limited horizontal extent into vertical. |
 | **Character** | **Ranch-like.** Open or semi-open land, buildings preferred, bought as cheap rural land. | The client's own framing, consistent across every revision. |
 | **Snow** | Hokkaido snow belt. 60/80/1.0 rule (see `07-terrain-and-snow/01-framework.md`). | |
 | **Park status** | **Outside** national and quasi-national park boundaries. | 自然公園法's 車馬等乗入れ規制 catches snowmobiles and snowcats at 1 yr / ¥1 m — **and it applies on private land inside the boundary.** Skis are not caught, but the client is buying the option to mechanise. |
