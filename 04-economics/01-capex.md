@@ -9,17 +9,17 @@ verification queue is in `04-economics/04-open-items.md`.
 
 | Tier | What it buys | NZ$ low | NZ$ high | **MYR low** | **MYR high** |
 |---|---|---:|---:|---:|---:|
-| **1 — Minimum viable private mountain** | Snowmobiles, base hut, safety kit, ski touring | 622,000 | 1,658,000 | **RM 1.50 m** | **RM 4.00 m** |
-| **2 — Snowcat-served private mountain** | + used snowcat with passenger cabin, workshop | 1,063,000 | 2,929,000 | **RM 2.57 m** | **RM 7.07 m** |
-| **3 — Private club** | + rope tow, guest lodge, certification | 1,525,000 | 4,388,000 | **RM 3.68 m** | **RM 10.60 m** |
+| **1 — Minimum viable private mountain** | Snowmobiles, base hut, safety kit, ski touring | 622,000 | 1,658,000 | **RM 1.49 m** | **RM 3.98 m** |
+| **2 — Snowcat-served private mountain** | + used snowcat with passenger cabin, workshop | 1,063,000 | 2,929,000 | **RM 2.55 m** | **RM 7.03 m** |
+| **3 — Private club** | + rope tow, guest lodge, certification | 1,525,000 | 4,388,000 | **RM 3.66 m** | **RM 10.53 m** |
 
 **Key line items** `[E]`:
 
 | Item | Cost |
 |---|---|
-| Used mid-size snowcat + passenger cabin, landed | NZ$185k–470k (RM 447k–1.14 m) |
+| Used mid-size snowcat + passenger cabin, landed | NZ$185k–470k (RM 444k–1.13 m) |
 | Snowcat all-in operating cost | NZ$100–195 per machine-hour |
-| Base hut, 80 m², off-grid power and water | NZ$296k–717k (RM 715k–1.73 m) |
+| Base hut, 80 m², off-grid power and water | NZ$296k–717k (RM 710k–1.72 m) |
 | Snowmobile fleet | US$25k–55k |
 
 ## Two findings that should change the plan

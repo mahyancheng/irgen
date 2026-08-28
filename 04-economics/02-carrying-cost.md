@@ -4,9 +4,9 @@
 
 | Jurisdiction | Baseline (no skiing) | With private skiing | MYR (with skiing) |
 |---|---|---|---|
-| **New Zealand** | NZ$346k–1,210k | NZ$371k–1,280k | **RM 896k–3.09 m** |
-| **Japan** | ≈ NZ$212k–935k | *(availability likely prohibitive)* | RM 512k–2.26 m |
-| **Chile** | ≈ NZ$106k–351k | **cheapest by 2–4×** | **RM 256k–848k** |
+| **New Zealand** | NZ$346k–1,210k | NZ$371k–1,280k | **RM 890k–3.07 m** |
+| **Japan** | ≈ NZ$212k–935k | *(availability likely prohibitive)* | RM 509k–2.24 m |
+| **Chile** | ≈ NZ$106k–351k | **cheapest by 2–4×** | **RM 254k–842k** |
 
 All `[E]`.
 
@@ -20,9 +20,9 @@ worse the carry looks as a percentage:
 
 | Purchase price | Total annual cost of ownership @ 5 % cost of capital | **Net carry as % of price** |
 |---|---|---:|
-| NZ$3 m | NZ$776k (**RM 1.87 m**) | **20.9 %** ⚠️ |
-| NZ$8 m | NZ$1,026k (**RM 2.48 m**) | 7.8 % |
-| NZ$35 m | NZ$2,376k (**RM 5.74 m**) | 1.8 % |
+| NZ$3 m | NZ$776k (**RM 1.86 m**) | **20.9 %** ⚠️ |
+| NZ$8 m | NZ$1,026k (**RM 2.46 m**) | 7.8 % |
+| NZ$35 m | NZ$2,376k (**RM 5.70 m**) | 1.8 % |
 
 > **At NZ$3 m you re-spend the purchase price in carrying cost roughly every five years.**
 

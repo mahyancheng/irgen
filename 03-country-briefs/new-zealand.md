@@ -94,7 +94,7 @@ the national all-farm median (NZ$28,115/ha, REINZ, Feb 2025) and a quarter of th
 median. The discount reflects unimproved land, very low stocking rates, and above all that
 much of the area is **leasehold, which carries little transferable value.** `[E]`
 
-At ~NZ$3,000/ha ≈ **RM 7,250/ha**, the *land* is genuinely cheap. The problem is never the
+At ~NZ$3,000/ha ≈ **RM 7,200/ha**, the *land* is genuinely cheap. The problem is never the
 price per hectare; it is that the hectares that are cheap are not the hectares with the
 mountain on them.
 
@@ -143,7 +143,7 @@ CAPEX, which is precisely how a low-capital private mountain could be financed.
 
 ### Mt Dobson — the honest comparator
 
-At NZ$2.8 m + GST (≈ **RM 6.8 m**) this is by far the cheapest route to control of a genuine
+At NZ$2.8 m + GST (≈ **RM 6.72 m**) this is by far the cheapest route to control of a genuine
 2,000 m New Zealand ski mountain with an existing chairlift — base ~1,600 m, summit ~2,030 m,
 ~305 m vertical, 400 ha ski area, 18 trails, triple chair + T-bar + platter, and reportedly
 the highest ski-field car park in the country. It has sat unsold for roughly 15 months, which

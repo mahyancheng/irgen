@@ -9,7 +9,7 @@ before any money is spent on legal work.
 |---|---|---|---|
 | 1 | **Does the registered title reach the summit?** Order the record of title and survey plan, overlay the parcel polygon on a DEM, and read the highest contour the title actually contains | LINZ / 法務局 / Conservador / county recorder | All |
 | 2 | **Freehold vs leasehold vs concession — decompose the marketed area** into its components with the area of each | Registry | All |
-| 3 | **Malaysian outward-investment capacity.** A resident individual **with domestic ringgit borrowing** is reportedly limited to **RM 1 m per calendar year** of foreign-currency investment; without such borrowing there is no limit `[U — bnm.gov.my unreachable]` | **Client's own bank, in writing** | All |
+| 3 | **Malaysian outward-investment capacity — VERIFIED.** A resident individual **with domestic ringgit borrowing** is capped at **RM 1 m equivalent per calendar year** where funded by converting ringgit. **No limit** with no domestic ringgit borrowing; RM 10 m if funded by FC borrowing; funds already held in foreign currency are outside the cap `[P1/P2]`. **Every candidate costs more than RM 1 m** | **Client's own bank, in writing** | All |
 | 4 | **Foreign-ownership consent** — is it required, on what test, and what is the realistic grant probability? | OIO (NZ) / n/a (Japan, Chile) / state statute (US) | All |
 | 5 | **Encumbrances that survive sale** — QEII covenants (NZ), 保安林 and park zoning (Japan), *tierra indígena* and mining concessions (Chile), severed minerals (US), *renskötselrätt* (Sweden) | Registry + agency | All |
 | 6 | **Vehicle-access prohibitions over the ski terrain** — 車馬等乗入れ規制区域 (Japan) and equivalents. A designation here ends the snowcat model | 環境省 / prefecture | Japan especially |

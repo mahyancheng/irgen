@@ -61,9 +61,9 @@ remoteness**.
 
 | Purchase price | Total annual cost of ownership @ 5 % | Net carry as % of price |
 |---|---|---:|
-| NZ$3 m | NZ$776k (**RM 1.87 m**) | **20.9 %** ⚠️ |
-| NZ$8 m | NZ$1,026k (RM 2.48 m) | 7.8 % |
-| NZ$35 m | NZ$2,376k (RM 5.74 m) | 1.8 % |
+| NZ$3 m | NZ$776k (**RM 1.86 m**) | **20.9 %** ⚠️ |
+| NZ$8 m | NZ$1,026k (RM 2.46 m) | 7.8 % |
+| NZ$35 m | NZ$2,376k (RM 5.70 m) | 1.8 % |
 
 **At NZ$3 m you re-spend the purchase price in carry roughly every five years.** What actually
 determines "low cost to hold", in order: **pest condition > existing access and buildings >

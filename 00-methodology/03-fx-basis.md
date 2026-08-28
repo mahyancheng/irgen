@@ -2,44 +2,50 @@
 
 ## 1. The conversion basis
 
-All MYR figures in this repository use these rates, fixed at the report date.
+**Verified from two independent sources on 27–28 August 2026.** All MYR figures in this
+repository use these rates.
 
 | Pair | 1 unit → MYR | 1 MYR → unit | Grade |
 |---|---:|---:|---|
-| **NZD/MYR** | **2.41511** | 0.41406 | `[P3]` single source, 23 Aug 2026 |
-| **JPY/MYR** | **0.025379** (¥100 = RM 2.5379) | 39.4022 | `[P3]` single source |
-| **USD/MYR** | **4.03649** | 0.24774 | `[P3]` single source |
+| **NZD/MYR** | **2.4000** | 0.4167 | `[P2]` two sources |
+| **JPY/MYR** | **0.02540** (¥100 = RM 2.540) | 39.37 | `[P2]` two sources |
+| **USD/MYR** | **4.0885** | 0.2446 | `[P2]` two sources |
+| **CLP/MYR** | **0.0044695** | **224.5 CLP** | `[P2]` |
 
-**Verification status: single-source, cross-checked only for internal consistency.** The
-research environment could not reach any FX provider or central bank directly, so the brief's
-"two independent sources per pair" standard **was not met for any currency.** That is stated
-rather than concealed.
+### Cross-rate coherence check
 
-**The one check that was possible.** The three anchors imply **NZD/USD 0.59832**,
-**USD/JPY 159.05** and **NZD/JPY 95.16**. All three are plausible cross-rates, so the anchors
-are mutually coherent and unlikely to be corrupt. That is genuine evidence, and it is all there
-is. `[E]`
+The four anchors imply **USD/JPY 160.96**, **NZD/USD 0.5870** and **USD/CLP 914.8**. All three
+are plausible market cross-rates, so the set is internally consistent as well as
+externally corroborated. `[E]`
 
-### Not sourced — indicative bands only, do not use for pricing
+### Observed volatility, for context
 
-`[E — low confidence]` EUR 4.36–4.84 · GBP 5.01–5.57 · CAD 2.78–3.03 · SEK 0.384–0.449 ·
-CLP 0.00404–0.00448 · **TRY 0.084–0.106 (very low confidence)** · GEL 1.42–1.52.
+- **NZD/MYR** traded between **2.381 and 2.416** in the week to 21 Aug 2026 — a **1.5 % range
+  in seven days.**
+- **USD/MYR** ranged 4.061–4.100 over the month to 12 Aug 2026, against a **2026 average of
+  3.968**. The ringgit has weakened roughly 3 % against the dollar across the year to date.
 
-Fill-in rule for any other currency: `X/MYR = 4.03649 ÷ (units of X per USD)`.
+**Correction to the first pass of this study:** the preliminary single-source readings were
+NZD 2.41511, JPY 0.025379 and USD 4.03649. The verified USD rate is **1.3 % higher** and the
+verified NZD rate sits at the **lower end** of the week's range rather than the top. MYR figures
+carried in earlier drafts are within ~1.5 % of those above.
 
 ### Convenience conversions
 
 | Original | MYR |
 |---|---|
-| NZ$ 1 m | RM 2.42 m |
-| **NZ$ 2.8 m** (Mt Dobson asking, ex-GST) | **RM 6.76 m** |
-| NZ$ 20 m | RM 48.3 m |
-| NZ$ 50 m | RM 120.8 m |
-| **¥ 10 m** (cheapest Japanese ski business found) | **RM 253,800** |
-| **¥ 25 m** (Akaigawa 74.4 ha 山林) | **RM 634,500** |
+| NZ$ 1 m | RM 2.40 m |
+| **NZ$ 2.8 m** (Mt Dobson asking, ex-GST) | **RM 6.72 m** |
+| NZ$ 3,000/ha (high-country land band) | **RM 7,200/ha** |
+| NZ$ 20 m | RM 48.0 m |
+| NZ$ 50 m | RM 120.0 m |
+| **¥ 10 m** (cheapest Japanese ski business found) | **RM 254,000** |
+| **¥ 25 m** (Akaigawa 74.4 ha 山林) | **RM 635,000** |
+| ¥ 336,000/ha (same, per hectare) | **RM 8,534/ha** |
 | ¥ 100 m | RM 2.54 m |
-| ¥ 380 m (Mt. 乗鞍) | RM 9.64 m |
-| US$ 1 m | RM 4.04 m |
+| ¥ 380 m (Mt. 乗鞍) | RM 9.65 m |
+| US$ 1 m | RM 4.09 m |
+| CLP 100 m | RM 447,000 |
 
 ## 2. FX is the largest variable after price
 
@@ -54,17 +60,32 @@ over a three-to-five-year hold is normal** for these pairs. `[E]`
 Rates should be re-struck at the date of any offer, and a forward or staged conversion
 considered for the deposit-to-settlement window.
 
-## 3. ⚠️ Malaysian outward-investment capacity — settle this before anything else
+## 3. ⚠️ Malaysian outward-investment capacity — **verified, and it constrains the mandate**
 
-A resident individual **with domestic ringgit borrowing** is reportedly limited to
-**RM 1 million per calendar year** of investment in foreign currency assets. A resident
-**without** domestic ringgit borrowing faces **no limit**. `[U — Bank Negara Malaysia's site
-was unreachable from the research environment]`
+Confirmed against Bank Negara Malaysia's Foreign Exchange Policy and bank guidance. `[P1/P2]`
 
-> **Every candidate in this study costs far more than RM 1 m. If the client has any domestic
-> ringgit borrowing, the purchase cannot lawfully be funded in a single year.** This is a
-> structural constraint on the entire mandate, not a compliance detail, and it must be
-> confirmed **in writing with the client's own bank before any deposit is paid.**
+| Situation | Limit on investment in foreign currency assets |
+|---|---|
+| Resident individual **with domestic ringgit borrowing** | **RM 1 million equivalent in aggregate per calendar year**, where funded by conversion of ringgit or by swapping financial assets |
+| Resident individual **with no domestic ringgit borrowing** | **No limit** |
+| Funded by foreign-currency borrowing from a licensed onshore bank or a non-resident | **RM 10 million equivalent in aggregate** |
+| Funded from foreign currency already held (e.g. an existing FCA, export proceeds) | **Not caught by the RM 1 m limit** |
+
+> **Every candidate in this study costs more than RM 1 million.** If the client holds **any**
+> domestic ringgit borrowing — a mortgage, a term loan, a financed car — a purchase funded by
+> converting ringgit **cannot lawfully be completed in a single calendar year**.
+
+**Three legitimate routes if the limit applies:**
+
+1. **Settle the domestic ringgit borrowing before converting** — the limit falls away entirely
+   once there is none.
+2. **Fund from foreign currency already held**, which is outside the RM 1 m cap.
+3. **Stage the conversion across calendar years** — which suits a rural acquisition timetable
+   with a long conditional period, but must be agreed with the vendor at heads-of-terms, not
+   discovered at settlement.
+
+**This is a structural constraint on the entire mandate, not a compliance detail, and it should
+be confirmed in writing with the client's own bank before an offer is made.**
 
 ## 4. All-in purchase cost for a non-resident, as a % of price
 

@@ -50,7 +50,7 @@ likely category to be captured. **Net: buy before the screening regime lands.** 
 | 都市計画税 | Does not reach land outside 市街化区域 |
 | **保安林** | **Exempt from 固定資産税, 不動産取得税 and 特別土地保有税 entirely** |
 
-> **A 500 ha forest plausibly costs ¥1.5–3.5 m/yr (≈ RM 45,000–110,000), and possibly
+> **A 500 ha forest plausibly costs ¥1.5–3.5 m/yr (≈ RM 38,100–88,900), and possibly
 > nothing at all.** `[P1/P2]` Compare this with New Zealand high-country rates plus wilding
 > conifer and rabbit control obligations. **On carrying cost, Japan wins the study outright.**
 

@@ -80,7 +80,7 @@ vendor's number.**
 | 3 — Snow | ✅ Excellent — but **warming squeezes from below.** Screen base ≥ 700 m, top ≥ 1,300 m. The spectacular 250–400 cm normals at 300–500 m describe **exactly the band that fails** |
 | 4 — Terrain | ⚠️ 300–450 m of freehold vertical is the realistic ceiling — against a Japanese *median* commercial area of 300–700 m |
 | 5 — Carry | ✅ **Best in the study.** 山林 fixed-asset tax runs thousands of yen per hectare; the ¥300,000 municipal exemption means many holdings pay **zero**; 保安林 is exempt outright. ❌ But **the ranching leg dies** — 農地法 art. 3 blocks farmland acquisition by a non-resident |
-| 6 — Price | ✅ **Order-of-magnitude cheaper than anywhere else.** Ski businesses at ¥10 m (**RM 254,000**); 山林 at ¥336,000/ha (**RM 8,530/ha**) |
+| 6 — Price | ✅ **Order-of-magnitude cheaper than anywhere else.** Ski businesses at ¥10 m (**RM 254,000**); 山林 at ¥336,000/ha (**RM 8,534/ha**) |
 
 **Why a defunct area specifically:** cleared, stumped runs **collapse `D_min` from ~250 cm over
 *sasa* bamboo to 50–80 cm** — the single largest ground-cover improvement available anywhere in
@@ -121,6 +121,6 @@ deeded mountain ranch** where the alpine comes with the deed.
 |---|---|
 | **Inland Kaikōura Range stations** (NZ) | The one part of New Zealand plausibly combining **freehold tenure with genuine alpine elevation** — Tapuae-o-Uenuku 2,885 m. Glazebrook (8,877 ha, 100 % freehold), Upton Fells, Middlehurst, Muzzle, Bluff. **Never reached before the budget ran out** |
 | **Matangi Station**, Alexandra (NZ) | Offers over NZ$8.6 m — **the only mid-market lead surfaced**, in the price band the client actually wants. Area, tenure and elevation all unverified |
-| **Mount Algidus Station** (NZ) | NZ$2,260/ha is the cheapest trophy per hectare found, but a RM 121 m ticket and the freehold/lease split is unresolved |
+| **Mount Algidus Station** (NZ) | NZ$2,260/ha is the cheapest trophy per hectare found, but a RM 120 m ticket and the freehold/lease split is unresolved |
 | **Mt Dobson** (NZ) | Fails Gate 1 outright — a DOC concession, not title. Retained only as the answer to *"is the objective to own land, or to control a mountain?"* At NZ$2.8 m + GST it is the cheapest control of a genuine 2,000 m mountain found anywhere |
 | **Spanish Pyrenees** | No nationality bar, cheap large *fincas* to 2,800 m, real *caza mayor* income. Under-screened |

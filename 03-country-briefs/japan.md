@@ -78,8 +78,8 @@ Japan has to be built on forest-category land, not bought as an existing farm.**
 
 | Class | ¥/坪 | ¥/ha | **MYR/ha** |
 |---|---|---|---|
-| 都市近隣山地 (peri-urban) | 3,300–5,000 | ¥10.0–15.1 m | RM 254k–383k |
-| 農村山地 (rural) | 1,000–2,600 | ¥3.0–7.9 m | RM 76k–200k |
+| 都市近隣山地 (peri-urban) | 3,300–5,000 | ¥10.0–15.1 m | RM 254k–384k |
+| 農村山地 (rural) | 1,000–2,600 | ¥3.0–7.9 m | RM 76k–201k |
 | 林業本場山地 (forestry heartland) | 300–1,600 | ¥0.9–4.8 m | RM 23k–122k |
 | **山村奥地山地 (remote mountain interior)** | **150–650** | **¥0.45–1.97 m** | **RM 11k–50k** |
 
@@ -93,10 +93,10 @@ resort, near a road network, or on land with development potential. `[P2]`
 
 | Ref | Property | Area | 地目 | Price | ¥/ha | MYR |
 |---|---|---|---|---|---|---|
-| **B2** | 余市郡赤井川村字富田 | **74.4 ha** (225,000坪) | **山林** | **¥25,000,000** | ¥336,000/ha | **RM 634,000** |
+| **B2** | 余市郡赤井川村字富田 | **74.4 ha** (225,000坪) | **山林** | **¥25,000,000** | ¥336,000/ha | **RM 635,000** |
 | B1 | 北海道浜頓別町 大自然林 | ~363.6 ha (1.1 m坪) | marketed 山林, unverified | Not published | — | — |
 
-**B2 (Akaigawa) is the best pure-land lead found.** At ¥336,000/ha (≈ **RM 8,530/ha**) it
+**B2 (Akaigawa) is the best pure-land lead found.** At ¥336,000/ha (≈ **RM 8,534/ha**) it
 prices as *remote mountain interior* despite sitting in the Akaigawa caldera next to Kiroro,
 inside the Niseko–Yoichi snow belt. That price/location mismatch is either a genuine bargain
 or a defect — no legal road frontage, a 保安林 designation barring clearing, fragmented title,
@@ -114,9 +114,9 @@ agencies market it, which may signal a long-unsold parcel. `[E]`
 | Ref | Asset | Price | MYR | Note |
 |---|---|---|---|---|
 | **A2** | Tōhoku ski area + 150-bed hotel, 2 lifts, 50-year history | **¥10,000,000** | **RM 254,000** | **事業譲渡 — a business transfer does not automatically convey real property. Land/building inclusion is UNVERIFIED.** Seller requires retaining staff and supplier relationships |
-| **A3** | Hokkaido ski area + lodge, night skiing | **¥10–30,000,000** | RM 254k–761k | **黒字 (profitable)** on ¥10–25 m sales. Best risk-adjusted cashflow found — could carry itself from day one. Location and tenure undisclosed |
-| A1 | Mt. 乗鞍スノーリゾート, 松本市 | ¥380–400,000,000 | RM 9.6–10.2 m | **12.99 ha freehold** + a 6,195 m² RC building from 1978. ¥29 m/ha, only 13 ha, and a 46-year-old building inherited as a liability |
-| A4 | Nagano ski + glamping, 2 lifts, 10 courses | ¥55,000,000 | RM 1.4 m | ❌ **Disqualified — leasehold land** |
+| **A3** | Hokkaido ski area + lodge, night skiing | **¥10–30,000,000** | RM 254k–762k | **黒字 (profitable)** on ¥10–25 m sales. Best risk-adjusted cashflow found — could carry itself from day one. Location and tenure undisclosed |
+| A1 | Mt. 乗鞍スノーリゾート, 松本市 | ¥380–400,000,000 | RM 9.65–10.16 m | **12.99 ha freehold** + a 6,195 m² RC building from 1978. ¥29 m/ha, only 13 ha, and a 46-year-old building inherited as a liability |
+| A4 | Nagano ski + glamping, 2 lifts, 10 courses | ¥55,000,000 | RM 1.40 m | ❌ **Disqualified — leasehold land** |
 
 ### The municipal pipeline — the most interesting channel in Japan
 
