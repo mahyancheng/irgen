@@ -54,7 +54,7 @@ h1 .jp{font-weight:500; color:var(--ink2); font-size:.82em; margin-left:8px}
 
 /* layout */
 .shell{flex:1; display:flex; min-height:0}
-#map{flex:1; min-width:0; background:var(--sunk)}
+#map{flex:1; min-width:0; background:var(--sunk); overflow:hidden}
 aside{
   width:370px; flex:none; background:var(--panel); border-left:1px solid var(--rule2);
   overflow-y:auto; padding:18px;
@@ -116,6 +116,17 @@ button:focus-visible{outline:2px solid var(--snow); outline-offset:2px}
   font-size:13px; font-weight:500; box-shadow:0 2px 10px rgba(0,0,0,.25); pointer-events:none;
 }
 .hide{display:none !important}
+.banner{
+  position:absolute; z-index:600; left:12px; right:12px; top:12px;
+  background:var(--flag-wash); color:var(--ink); border:1px solid var(--flag);
+  border-left:4px solid var(--flag); padding:11px 14px; border-radius:2px;
+  font-size:13px; line-height:1.5; box-shadow:0 2px 10px var(--shadow,rgba(0,0,0,.2));
+}
+.banner b{font-family:"Zilla Slab",serif; display:block; margin-bottom:3px; font-size:1.02rem}
+.dead{
+  display:flex; align-items:center; justify-content:center; height:100%;
+  padding:32px; text-align:center; color:var(--ink2); font-size:14px; line-height:1.6;
+}
 </style>
 </head>
 <body>
@@ -154,6 +165,7 @@ button:focus-visible{outline:2px solid var(--snow); outline-offset:2px}
 
     <div id="out" class="hide">
       <canvas id="chart"></canvas>
+      <div class="stat"><span>DEM samples returned</span><b id="s-n">—</b></div>
       <div class="stat"><span>Horizontal run</span><b id="s-run">—</b></div>
       <div class="stat"><span>Relief, end to end</span><b id="s-rel">—</b></div>
       <div class="stat"><span>Average gradient</span><b id="s-avg">—</b></div>
@@ -192,11 +204,20 @@ button:focus-visible{outline:2px solid var(--snow); outline-offset:2px}
 </div>
 
 <div id="pill" class="pill hide"></div>
+<div id="banner" class="banner hide"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
 (function(){
   "use strict";
+
+  if (typeof L === "undefined") {
+    document.getElementById("map").innerHTML =
+      '<div class="dead"><div><strong>The map library did not load.</strong><br>' +
+      'Leaflet is fetched from cdnjs.cloudflare.com. If that host is blocked on this ' +
+      'network, the map cannot start. The rest of the page is unaffected.</div></div>';
+    return;
+  }
 
   var GSI = "https://cyberjapandata.gsi.go.jp/xyz/";
   var ATTR = '出典：<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener">国土地理院</a>';
@@ -220,6 +241,25 @@ button:focus-visible{outline:2px solid var(--snow); outline-offset:2px}
 
   var curBase = bases.pale.addTo(map);
   slope.addTo(map);
+
+  // Tiles come from 国土地理院. If that host is unreachable the map renders as an
+  // empty grey box with no error, which reads as a broken page rather than a
+  // blocked request — so say so once.
+  var tileErrors = 0, tileOK = false, banner = document.getElementById("banner");
+  function watchTiles(layer){
+    layer.on("tileload", function(){ tileOK = true; banner.classList.add("hide"); });
+    layer.on("tileerror", function(){
+      if (++tileErrors >= 4 && !tileOK) {
+        banner.innerHTML = "<b>Map tiles are not loading</b>Tiles come from " +
+          "<code>cyberjapandata.gsi.go.jp</code> (国土地理院). Nothing is reaching it from this " +
+          "network, so the map is blank. The elevation profile relies on the same service and " +
+          "will fail too. This is a network reachability problem, not a fault in the page.";
+        banner.classList.remove("hide");
+      }
+    });
+  }
+  Object.keys(bases).forEach(function(k){ watchTiles(bases[k]); });
+  watchTiles(slope); watchTiles(hill);
 
   // caldera reference ring — schematic, ~3.3 km radius
   L.circle(CENTER, {
@@ -405,6 +445,9 @@ button:focus-visible{outline:2px solid var(--snow); outline-offset:2px}
 
     var b300 = steepest(d, z, 300), b100 = steepest(d, z, 100);
 
+    var sn = document.getElementById("s-n");
+    sn.textContent = z.length + " / " + SAMPLES;
+    sn.style.color = z.length < SAMPLES * 0.8 ? "var(--flag)" : "";
     document.getElementById("s-run").textContent = Math.round(total) + " m";
     document.getElementById("s-rel").textContent = (relief >= 0 ? "+" : "") + Math.round(relief) + " m";
     document.getElementById("s-avg").textContent = avg.toFixed(1) + "°";
