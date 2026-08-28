@@ -115,7 +115,7 @@ agencies market it, which may signal a long-unsold parcel. `[E]`
 |---|---|---|---|---|
 | **A2** | Tōhoku ski area + 150-bed hotel, 2 lifts, 50-year history | **¥10,000,000** | **RM 254,000** | **事業譲渡 — a business transfer does not automatically convey real property. Land/building inclusion is UNVERIFIED.** Seller requires retaining staff and supplier relationships |
 | **A3** | Hokkaido ski area + lodge, night skiing | **¥10–30,000,000** | RM 254k–762k | **黒字 (profitable)** on ¥10–25 m sales. Best risk-adjusted cashflow found — could carry itself from day one. Location and tenure undisclosed |
-| A1 | Mt. 乗鞍スノーリゾート, 松本市 | ¥380–400,000,000 | RM 9.65–10.16 m | **12.99 ha freehold** + a 6,195 m² RC building from 1978. ¥29 m/ha, only 13 ha, and a 46-year-old building inherited as a liability |
+| A1 | ~~Mt. 乗鞍スノーリゾート, 松本市~~ | ~~¥380–400,000,000~~ | — | ❌ **CORRECTED AND DISQUALIFIED — the land is rented.** The ~¥400 m is facilities only; a transferee must contract separately with the landowner. The "12.99 ha 所有権" figures were conflated with **ルーデンス湯沢 Ludens Yuzawa**, which is the freehold asset. See `02-dossiers/japan-small-parcels.md` |
 | A4 | Nagano ski + glamping, 2 lifts, 10 courses | ¥55,000,000 | RM 1.40 m | ❌ **Disqualified — leasehold land** |
 
 ### The municipal pipeline — the most interesting channel in Japan
