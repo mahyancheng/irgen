@@ -11,17 +11,41 @@ allowlist but blocks external **images and fetch** entirely. Map tiles are image
 API is a fetch, so a tile-server map cannot work inside an Artifact. A plain hosted page has no such
 restriction — the visitor's browser talks to `cyberjapandata.gsi.go.jp` directly.
 
-## Deploy
+## Running it
 
-No build step; it is one static file.
+There is no build step and no server side — it is one static file.
+
+### Locally, publishing nothing
+
+The simplest option, and the right one for a private acquisition tool. The map tiles load from the
+GSI servers in *your* browser, so a local file works exactly like a hosted one.
 
 ```sh
-cd web
-npx vercel deploy --prod
+cd web && python3 -m http.server 8000
+# then open http://localhost:8000
 ```
 
-Or drag this folder onto https://vercel.com/new. Any static host works — Netlify, Cloudflare Pages,
-GitHub Pages — since there is no server side.
+### GitHub Pages
+
+`.github/workflows/pages.yml` deploys **`web/` only** — the dossiers, prices and vendor details
+elsewhere in this repository are not uploaded. To turn it on:
+
+1. Merge this branch to `main`.
+2. Repo **Settings → Pages → Source: GitHub Actions**.
+3. The workflow runs on any push touching `web/`, or on demand via **Actions → Deploy terrain
+   viewer to Pages → Run workflow**.
+
+To deploy from this branch before merging, also add it under **Settings → Environments →
+github-pages → Deployment branches**, which defaults to the default branch only.
+
+> **A GitHub Pages site is public** — including from a private repository, on every plan below
+> Enterprise Cloud. Publishing it puts the caldera under evaluation on the open web. It carries no
+> price and no vendor name, but it does disclose the target area.
+
+### Other hosts
+
+Vercel, Netlify, Cloudflare Pages and any other static host all work — drop the folder in. None of
+them could be reached from the workspace this was written in; only GitHub was.
 
 ## What it does
 
